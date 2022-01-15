@@ -6,7 +6,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from core.auth.serializers import RegisterSerializer
 
 
-class RegistrationViewSet(ViewSet):
+class RegisterViewSet(ViewSet):
     serializer_class = RegisterSerializer
     permission_classes = (AllowAny,)
     http_method_names = ['post']
