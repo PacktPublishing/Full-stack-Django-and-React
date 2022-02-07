@@ -5,7 +5,6 @@ from rest_framework import status
 
 from core.abstract.viewsets import AbstractViewSet
 from core.comment.models import Comment
-from core.post.models import Post
 from core.comment.serializers import CommentSerializer
 from core.auth.permissions import UserPermission
 
