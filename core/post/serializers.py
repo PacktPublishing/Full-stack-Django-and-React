@@ -16,8 +16,8 @@ class PostSerializer(AbstractSerializer):
 
         request = self.context.get('request', None)
 
-        if request is None:
-            return True
+        if request is None or request.user.is_anonymous:
+            return False
 
         return request.user.has_liked(instance)
 
