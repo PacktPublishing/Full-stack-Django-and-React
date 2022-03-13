@@ -5,3 +5,4 @@ django-filter==21.1
 pillow==9.0.0
 djangorestframework-simplejwt==5.0.0
 drf-nested-routers==0.93.4
+pytest==7.0.1
