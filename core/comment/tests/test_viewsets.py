@@ -4,7 +4,7 @@ from core.fixtures.user import user
 from core.fixtures.post import post
 from core.fixtures.comment import comment
 
-class TestComentViewSet:
+class TestCommentViewSet:
     
     # The comment resource is nested under the post resource
     
