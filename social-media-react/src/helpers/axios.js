@@ -1,7 +1,7 @@
 import axios from "axios";
 import createAuthRefreshInterceptor from "axios-auth-refresh";
-import authSlice from "../state/slices/auth";
-import store from "../state";
+import authSlice from "../store/slices/auth";
+import store from "../store";
 
 const axiosService = axios.create({
   baseURL: process.env.REACT_APP_API_BASE_URL || "https://api.staging.quatroapp.com",
@@ -11,9 +11,11 @@ const axiosService = axios.create({
 });
 
 axiosService.interceptors.request.use(async (config) => {
-  const { token } = store.getState().auth;
-  // eslint-disable-next-line no-param-reassign
-  config.headers.Authorization = `Bearer ${token}`;
+  /**
+   * Retrieving the access token from the store and add it to the headers of the request
+   */
+  const { access } = store.getState().auth;
+  config.headers.Authorization = `Bearer ${access}`;
   return config;
 });
 
@@ -23,21 +25,21 @@ axiosService.interceptors.response.use(
 );
 
 const refreshAuthLogic = async (failedRequest) => {
-  const { refreshToken } = store.getState().auth;
+  const { refresh } = store.getState().auth;
   return axios
     .post("/refresh/token/", null, {
       baseURL: process.env.REACT_APP_API_BASE_URL || "https://api.staging.quatroapp.com",
       headers: {
-        Authorization: `Bearer ${refreshToken}`,
+        Authorization: `Bearer ${refresh}`,
       },
     })
     .then((resp) => {
-      const { token, refresh } = resp.data;
-      failedRequest.response.config.headers["Authorization"] = "Bearer " + token;
-      store.dispatch(authSlice.actions.setAuthTokens({ token, refreshToken: refresh }));
+      const { access, refresh } = resp.data;
+      failedRequest.response.config.headers["Authorization"] = "Bearer " + access;
+      store.dispatch(authSlice.actions.setTokens({ access, refresh }));
     })
-    .catch((err) => {
-      store.dispatch(authSlice.actions.setLogout());
+    .catch(() => {
+      store.dispatch(authSlice.actions.clearTokens());
     });
 };
 
