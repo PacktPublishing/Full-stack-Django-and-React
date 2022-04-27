@@ -25,7 +25,7 @@ function LoginForm() {
 
     const data = {
       username: form.username,
-      password: form.password
+      password: form.password,
     };
 
     axios
@@ -49,7 +49,7 @@ function LoginForm() {
       })
       .catch((err) => {
         if (err.message) {
-            setError(err.request.response);
+          setError(err.request.response);
         }
       });
   };
@@ -91,9 +91,7 @@ function LoginForm() {
         </Form.Control.Feedback>
       </Form.Group>
 
-      <div className="text-content text-danger">
-        {error && <p>{error}</p>}
-      </div>
+      <div className="text-content text-danger">{error && <p>{error}</p>}</div>
 
       <Button variant="primary" type="submit">
         Submit

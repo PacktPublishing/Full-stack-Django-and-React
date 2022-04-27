@@ -4,17 +4,20 @@ import storage from "redux-persist/lib/storage";
 import authSlice from "./slices/auth";
 
 const rootReducer = combineReducers({
-    auth: authSlice.reducer,
+  auth: authSlice.reducer,
 });
 
-const persistedReducer = persistReducer({
+const persistedReducer = persistReducer(
+  {
     key: "root-social-media",
     version: 1,
-    storage: storage
-}, rootReducer);
+    storage: storage,
+  },
+  rootReducer
+);
 
 const store = configureStore({
-    reducer: persistedReducer
+  reducer: persistedReducer,
 });
 
 export const persistor = persistStore(store);

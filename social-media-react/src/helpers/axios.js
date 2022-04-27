@@ -21,7 +21,7 @@ axiosService.interceptors.request.use(async (config) => {
 
 axiosService.interceptors.response.use(
   (res) => Promise.resolve(res),
-  (err) => Promise.reject(err),
+  (err) => Promise.reject(err)
 );
 
 const refreshAuthLogic = async (failedRequest) => {
@@ -35,7 +35,8 @@ const refreshAuthLogic = async (failedRequest) => {
     })
     .then((resp) => {
       const { access, refresh } = resp.data;
-      failedRequest.response.config.headers["Authorization"] = "Bearer " + access;
+      failedRequest.response.config.headers["Authorization"] =
+        "Bearer " + access;
       store.dispatch(authSlice.actions.setTokens({ access, refresh }));
     })
     .catch(() => {

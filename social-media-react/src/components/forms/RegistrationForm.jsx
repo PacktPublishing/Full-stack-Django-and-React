@@ -53,7 +53,7 @@ function RegistrationForm() {
       })
       .catch((err) => {
         if (err.message) {
-            setError(err.request.response);
+          setError(err.request.response);
         }
       });
   };
@@ -145,9 +145,7 @@ function RegistrationForm() {
         />
       </Form.Group>
 
-      <div className="text-content text-danger">
-        {error && <p>{error}</p>}
-      </div>
+      <div className="text-content text-danger">{error && <p>{error}</p>}</div>
 
       <Button variant="primary" type="submit">
         Submit
