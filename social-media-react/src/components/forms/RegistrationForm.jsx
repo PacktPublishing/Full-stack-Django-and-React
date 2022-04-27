@@ -44,9 +44,7 @@ function RegistrationForm() {
           })
         );
         dispatch(
-          authSlice.actions.setUser({
-            user: res.data.user,
-          })
+          authSlice.actions.setUser(res.data.user)
         );
 
         navigate("/");
