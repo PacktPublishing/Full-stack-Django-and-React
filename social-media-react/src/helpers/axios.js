@@ -4,7 +4,7 @@ import authSlice from "../store/slices/auth";
 import store from "../store";
 
 const axiosService = axios.create({
-  baseURL: process.env.REACT_APP_API_BASE_URL || "https://api.staging.quatroapp.com",
+  baseURL: "http://localhost:8000",
   headers: {
     "Content-Type": "application/json",
   },
@@ -28,7 +28,7 @@ const refreshAuthLogic = async (failedRequest) => {
   const { refresh } = store.getState().auth;
   return axios
     .post("/refresh/token/", null, {
-      baseURL: process.env.REACT_APP_API_BASE_URL || "https://api.staging.quatroapp.com",
+      baseURL: "http://localhost:8000",
       headers: {
         Authorization: `Bearer ${refresh}`,
       },
