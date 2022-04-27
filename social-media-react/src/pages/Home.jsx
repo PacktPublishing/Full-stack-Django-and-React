@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-function Profile() {
+function Home() {
 
   const { user } = useSelector((state) => state.auth);
 
@@ -21,4 +21,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default Home;
