@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 function ProtectedRoute({ children }) {
   const auth = useSelector((state) => state.auth);
 
-  return auth.account ? <>{children}</> : <Navigate to="/login/" />;
+  return auth.user ? <>{children}</> : <Navigate to="/login/" />;
 }
 
 export default ProtectedRoute;
