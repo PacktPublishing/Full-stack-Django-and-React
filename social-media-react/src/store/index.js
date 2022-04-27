@@ -8,7 +8,7 @@ const rootReducer = combineReducers({
 });
 
 const persistedReducer = persistReducer({
-    key: "root",
+    key: "root-social-media",
     version: 1,
     storage: storage
 }, rootReducer);
