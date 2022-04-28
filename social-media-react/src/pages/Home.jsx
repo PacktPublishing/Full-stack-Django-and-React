@@ -5,8 +5,6 @@ function Home() {
 
   const { user } = useSelector((state) => state.auth);
 
-  console.log(user.id);
-
   if(!user) {
     return <div>Loading!</div>
   }
@@ -15,7 +13,7 @@ function Home() {
     <div>
       <h1>Profile</h1>
       <p>
-        Welcome, {user.name}!
+        Welcome!
       </p>
     </div>
   );
