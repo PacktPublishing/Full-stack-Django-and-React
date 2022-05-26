@@ -4,7 +4,7 @@ import authSlice from "../store/slices/auth";
 import store from "../store";
 
 const axiosService = axios.create({
-  baseURL: "http://localhost:8000",
+  baseURL: "http://localhost:8000/api",
   headers: {
     "Content-Type": "application/json",
   },
