@@ -2,13 +2,9 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-
-import authSlice from "../../store/slices/auth";
 
 function LoginForm() {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const [validated, setValidated] = useState(false);
   const [form, setForm] = useState({});
   const [error, setError] = useState(null);
@@ -33,15 +29,11 @@ function LoginForm() {
       .then((res) => {
         // Registeriing the account and tokens in the store
 
-        dispatch(
-          authSlice.actions.setTokens({
-            access: res.data.access,
-            refresh: res.data.refresh,
-          })
-        );
-        dispatch(
-          authSlice.actions.setUser(res.data.user)
-        );
+        localStorage.setItem("auth", {
+          access: res.data.access,
+          refresh: res.data.refresh,
+          user: res.data.user,
+        });
 
         navigate("/");
       })
