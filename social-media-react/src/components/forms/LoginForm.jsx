@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+
+import { useUserActions } from "../../hooks/user.actions";
 
 function LoginForm() {
-  const navigate = useNavigate();
   const [validated, setValidated] = useState(false);
   const [form, setForm] = useState({});
   const [error, setError] = useState(null);
+  const userActions = useUserActions();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -24,19 +24,7 @@ function LoginForm() {
       password: form.password,
     };
 
-    axios
-      .post("http://localhost:8000/api/auth/login/", data)
-      .then((res) => {
-        // Registeriing the account and tokens in the store
-
-        localStorage.setItem("auth", JSON.stringify({
-          access: res.data.access,
-          refresh: res.data.refresh,
-          user: res.data.user,
-        }));
-
-        navigate("/");
-      })
+    userActions.login(data)
       .catch((err) => {
         if (err.message) {
           setError(err.request.response);

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-export function useUserActions() {
+function useUserActions() {
   const navigate = useNavigate();
   const baseURL = "http://localhost:8000/api";
 
@@ -9,9 +9,6 @@ export function useUserActions() {
     login,
     register,
     logout,
-    getUser,
-    getAccessToken,
-    getRefreshToken,
   };
 
   // Login the user
@@ -51,22 +48,24 @@ export function useUserActions() {
     localStorage.removeItem("auth");
     navigate("/login");
   }
-
-  // Get the user
-  function getUser() {
-    const auth = JSON.parse(localStorage.getItem("auth"));
-    return auth.user;
-  }
-
-  // Get the access token
-  function getAccessToken() {
-    const auth = JSON.parse(localStorage.getItem("auth"));
-    return auth.access;
-  }
-
-  // Get the refresh token
-  function getRefreshToken() {
-    const auth = JSON.parse(localStorage.getItem("auth"));
-    return auth.refresh;
-  }
 }
+
+// Get the user
+function getUser() {
+  const auth = JSON.parse(localStorage.getItem("auth"));
+  return auth.user;
+}
+
+// Get the access token
+function getAccessToken() {
+  const auth = JSON.parse(localStorage.getItem("auth"));
+  return auth.access;
+}
+
+// Get the refresh token
+function getRefreshToken() {
+  const auth = JSON.parse(localStorage.getItem("auth"));
+  return auth.refresh;
+}
+
+export { useUserActions, getUser, getAccessToken, getRefreshToken };
