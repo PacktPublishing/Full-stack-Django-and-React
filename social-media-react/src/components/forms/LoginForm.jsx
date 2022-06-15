@@ -29,11 +29,11 @@ function LoginForm() {
       .then((res) => {
         // Registeriing the account and tokens in the store
 
-        localStorage.setItem("auth", {
+        localStorage.setItem("auth", JSON.stringify({
           access: res.data.access,
           refresh: res.data.refresh,
           user: res.data.user,
-        });
+        }));
 
         navigate("/");
       })

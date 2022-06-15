@@ -1,7 +1,7 @@
 import React from "react";
 
 function Home() {
-  const { user } = localStorage.getItem("auth");
+  const { user } = JSON.parse(localStorage.getItem("auth"));
 
   if (!user) {
     return <div>Loading!</div>;

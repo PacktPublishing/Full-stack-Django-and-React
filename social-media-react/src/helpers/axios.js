@@ -12,7 +12,7 @@ axiosService.interceptors.request.use(async (config) => {
   /**
    * Retrieving the access and refresh tokens from the local storage
    */
-  const { access } = localStorage.getItem("auth");
+  const { access } = JSON.parse(localStorage.getItem("auth"));
   config.headers.Authorization = `Bearer ${access}`;
   return config;
 });
@@ -23,7 +23,7 @@ axiosService.interceptors.response.use(
 );
 
 const refreshAuthLogic = async (failedRequest) => {
-  const { refresh } = localStorage.getItem("auth");
+  const { refresh } = JSON.parse(localStorage.getItem("auth"));
   return axios
     .post("/refresh/token/", null, {
       baseURL: "http://localhost:8000",
@@ -35,7 +35,7 @@ const refreshAuthLogic = async (failedRequest) => {
       const { access, refresh } = resp.data;
       failedRequest.response.config.headers["Authorization"] =
         "Bearer " + access;
-      localStorage.setItem("auth", { access, refresh });
+      localStorage.setItem("auth", JSON.stringify({ access, refresh }));
     })
     .catch(() => {
       localStorage.removeItem("auth");
