@@ -1,7 +1,8 @@
 import React from "react";
+import { getUser } from "../hooks/user.actions";
 
 function Home() {
-  const { user } = JSON.parse(localStorage.getItem("auth"));
+  const user = getUser();
 
   if (!user) {
     return <div>Loading!</div>;
