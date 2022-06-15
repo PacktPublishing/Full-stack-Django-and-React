@@ -1,22 +1,17 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { getUser } from "../hooks/user.actions";
 
 function Home() {
+  const user = getUser();
 
-  const { user } = useSelector((state) => state.auth);
-
-  console.log(user.id);
-
-  if(!user) {
-    return <div>Loading!</div>
+  if (!user) {
+    return <div>Loading!</div>;
   }
 
   return (
     <div>
       <h1>Profile</h1>
-      <p>
-        Welcome, {user.name}!
-      </p>
+      <p>Welcome!</p>
     </div>
   );
 }
