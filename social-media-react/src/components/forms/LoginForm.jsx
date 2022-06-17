@@ -11,9 +11,9 @@ function LoginForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const registrationForm = event.currentTarget;
+    const loginForm = event.currentTarget;
 
-    if (registrationForm.checkValidity() === false) {
+    if (loginForm.checkValidity() === false) {
       event.stopPropagation();
     }
 

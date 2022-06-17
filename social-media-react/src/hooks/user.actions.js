@@ -15,14 +15,7 @@ function useUserActions() {
   function login(data) {
     return axios.post(`${baseURL}/auth/login/`, data).then((res) => {
       // Registering the account and tokens in the store
-      localStorage.setItem(
-        "auth",
-        JSON.stringify({
-          access: res.data.access,
-          refresh: res.data.refresh,
-          user: res.data.user,
-        })
-      );
+      setUserData(data);
       navigate("/");
     });
   }
@@ -31,14 +24,7 @@ function useUserActions() {
   function register(data) {
     return axios.post(`${baseURL}/auth/register/`, data).then((res) => {
       // Registering the account and tokens in the store
-      localStorage.setItem(
-        "auth",
-        JSON.stringify({
-          access: res.data.access,
-          refresh: res.data.refresh,
-          user: res.data.user,
-        })
-      );
+      setUserData(data);
       navigate("/");
     });
   }
@@ -66,6 +52,18 @@ function getAccessToken() {
 function getRefreshToken() {
   const auth = JSON.parse(localStorage.getItem("auth"));
   return auth.refresh;
+}
+
+// Set the access, token and user property
+function setUserData(data) {
+  localStorage.setItem(
+    "auth",
+    JSON.stringify({
+      access: res.data.access,
+      refresh: res.data.refresh,
+      user: res.data.user,
+    })
+  );
 }
 
 export { useUserActions, getUser, getAccessToken, getRefreshToken };
