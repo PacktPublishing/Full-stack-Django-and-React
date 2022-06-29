@@ -1,18 +1,19 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import Layout from "../components/Layout";
 import { Row, Col, Image, Form } from "react-bootstrap";
 import { RANDOM_AVATAR } from "../utils";
 import useSWR from "swr";
 import { fetcher } from "../helpers/axios";
 import Profile from "../components/Profile";
+import { getUser } from "../hooks/user.actions";
 
 function Home() {
-  const { user } = useSelector((state) => state.auth);
 
   const profiles = useSWR("/user", fetcher, {
     refreshInterval: 20000,
   })
+
+  const user = getUser();
 
   if (!user) {
     return <div>Loading!</div>;
