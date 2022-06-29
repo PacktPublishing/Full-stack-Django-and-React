@@ -59,9 +59,9 @@ function setUserData(data) {
   localStorage.setItem(
     "auth",
     JSON.stringify({
-      access: res.data.access,
-      refresh: res.data.refresh,
-      user: res.data.user,
+      access: data.access,
+      refresh: data.refresh,
+      user: data.user,
     })
   );
 }
