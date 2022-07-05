@@ -8,6 +8,7 @@ import {
 } from "@ant-design/icons";
 import { Image, Card, Dropdown } from "react-bootstrap";
 import { RANDOM_AVATAR } from "../../utils";
+import axiosService from "../../helpers/axios";
 import { getUser } from "../../hooks/user.actions";
 
 const MoreToggleIcon = React.forwardRef(({ onClick }, ref) => (
@@ -24,9 +25,17 @@ const MoreToggleIcon = React.forwardRef(({ onClick }, ref) => (
 ));
 
 function Post(props) {
-  const { post } = props;
+  const { post, refresh } = props;
 
   const user = getUser();
+
+  const handleLikeClick = (action) => {
+    axiosService.post(`/post/${post.id}/${action}/`).then(
+        () => {
+            refresh();
+        }
+    ).catch(err => console.error(err));
+  }
 
   return (
     <Card className="rounded-3 my-2">
@@ -89,6 +98,13 @@ function Post(props) {
               padding: "2px",
               fontSize: "20px",
               color: post.liked ? "#0D6EFD" : "#C4C4C4",
+            }}
+            onClick={() => {
+                if (post.liked) {
+                    handleLikeClick('remove_like');
+                } else {
+                    handleLikeClick('like');
+                }
             }}
           />
           <p className="ms-1">
