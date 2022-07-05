@@ -1,15 +1,31 @@
 import React from "react";
+import { RANDOM_AVATAR } from "../utils";
 
-import {Navbar, Container, Image} from 'react-bootstrap'
+import { Navbar, Container, Image, NavDropdown, Nav } from "react-bootstrap";
 
 function Navigationbar() {
   return (
     <Navbar bg="primary" variant="dark">
       <Container>
-        <Navbar.Brand className="font-weight-bold" href="#home">Postagram</Navbar.Brand>
-        <Navbar.Toggle />
+        <Navbar.Brand className="fw-bold" href="#home">
+          Postagram
+        </Navbar.Brand>
         <Navbar.Collapse className="justify-content-end">
-            <Image src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" width="30" height="30" rounded />
+          <Nav>
+            <NavDropdown
+              title={
+                <Image
+                  src={RANDOM_AVATAR}
+                  roundedCircle
+                  width={36}
+                  height={36}
+                />
+              }
+            >
+              <NavDropdown.Item href="#">Profile</NavDropdown.Item>
+              <NavDropdown.Item href="#">Logout</NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
