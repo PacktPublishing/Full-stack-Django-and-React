@@ -1,17 +1,22 @@
 import React from "react";
 import Layout from "../components/Layout";
-import { Row, Col, Image, Form } from "react-bootstrap";
+import {
+  Row,
+  Col,
+  Image,
+  Form,
+} from "react-bootstrap";
 import { RANDOM_AVATAR } from "../utils";
 import useSWR from "swr";
 import { fetcher } from "../helpers/axios";
-import Profile from "../components/Profile";
 import { getUser } from "../hooks/user.actions";
+import { Post } from "../components/posts";
+
 
 function Home() {
-
-  const profiles = useSWR("/user", fetcher, {
+  const posts = useSWR("/post/", fetcher, {
     refreshInterval: 20000,
-  })
+  });
 
   const user = getUser();
 
@@ -43,17 +48,22 @@ function Home() {
               </Form.Group>
             </Col>
           </Row>
+          <hr />
+          <Row className="my-2">
+            {posts.data?.results.map(post => (
+              <Post key={post.id} post={post} />
+            ))}
+          </Row>
         </Col>
-        <Col sm={3} className="border rounded py-4">
+        {/* <Col sm={3} className="border rounded py-4">
           <h4 className="font-weight-bold text-center">Suggested people</h4>
           <div className="d-flex flex-column">
-            {
-              profiles.data && profiles.data.results.map((profile) => (
+            {profiles.data &&
+              profiles.data.results.map((profile) => (
                 <Profile key={profile.id} user={profile} />
-              ))
-            }
+              ))}
           </div>
-        </Col>
+        </Col> */}
       </Row>
     </Layout>
   );

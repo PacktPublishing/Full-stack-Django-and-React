@@ -13,7 +13,7 @@ function Profile(props) {
   };
 
   return (
-    <Card className="border-0 p-3">
+    <Card className="border-0 p-2">
       <div className="d-flex ">
         <Image
           src={RANDOM_AVATAR}
