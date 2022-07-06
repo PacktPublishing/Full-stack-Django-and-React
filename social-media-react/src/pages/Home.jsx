@@ -4,13 +4,13 @@ import {
   Row,
   Col,
   Image,
-  Form,
 } from "react-bootstrap";
 import { RANDOM_AVATAR } from "../utils";
 import useSWR from "swr";
 import { fetcher } from "../helpers/axios";
 import { getUser } from "../hooks/user.actions";
 import { Post } from "../components/posts";
+import CreatePost from "../components/posts/CreatePost";
 
 
 function Home() {
@@ -39,13 +39,7 @@ function Home() {
               />
             </Col>
             <Col sm={9} className="flex-grow-1">
-              <Form.Group className="my-3 w-75">
-                <Form.Control
-                  className="py-2 rounded-pill border-primary text-primary"
-                  type="text"
-                  placeholder="Write a post"
-                />
-              </Form.Group>
+              <CreatePost />
             </Col>
           </Row>
           <hr />
