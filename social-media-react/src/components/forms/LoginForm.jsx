@@ -24,12 +24,11 @@ function LoginForm() {
       password: form.password,
     };
 
-    userActions.login(data)
-      .catch((err) => {
-        if (err.message) {
-          setError(err.request.response);
-        }
-      });
+    userActions.login(data).catch((err) => {
+      if (err.message) {
+        setError(err.request.response);
+      }
+    });
   };
 
   return (
