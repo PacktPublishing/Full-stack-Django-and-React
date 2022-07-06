@@ -44,8 +44,7 @@ function Home() {
               <CreatePost />
             </Col>
           </Row>
-          <hr />
-          <Row className="my-2">
+          <Row className="my-4">
             {posts.data?.results.map(post => (
               <Post key={post.id} post={post} refresh={posts.mutate} />
             ))}

@@ -52,7 +52,7 @@ function Post(props) {
 
   return (
     <>
-      <Card className="rounded-3 my-2">
+      <Card className="rounded-3 my-4">
         <Card.Body>
           <Card.Title className="d-flex flex-row justify-content-between">
             <div className="d-flex flex-row">
@@ -138,7 +138,7 @@ function Post(props) {
                 color: "#C4C4C4",
               }}
             />
-            <p className="ms-1">
+            <p className="ms-1 mb-0">
               <small>Comment</small>
             </p>
           </div>
