@@ -10,6 +10,7 @@ import { Image, Card, Dropdown, Toast, ToastContainer } from "react-bootstrap";
 import { RANDOM_AVATAR } from "../../utils";
 import axiosService from "../../helpers/axios";
 import { getUser } from "../../hooks/user.actions";
+import UpdatePost from "./UpdatePost";
 
 const MoreToggleIcon = React.forwardRef(({ onClick }, ref) => (
   <a
@@ -74,7 +75,7 @@ function Post(props) {
                 <Dropdown>
                   <Dropdown.Toggle as={MoreToggleIcon}></Dropdown.Toggle>
                   <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">Modifier</Dropdown.Item>
+                    <UpdatePost post={post} refresh={refresh}/>
                     <Dropdown.Item
                       onClick={handleDelete}
                       className="text-danger"
