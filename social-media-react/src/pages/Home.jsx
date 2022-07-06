@@ -5,7 +5,7 @@ import {
   Col,
   Image,
 } from "react-bootstrap";
-import { RANDOM_AVATAR } from "../utils";
+import { randomAvatar } from "../utils";
 import useSWR from "swr";
 import { fetcher } from "../helpers/axios";
 import { getUser } from "../hooks/user.actions";
@@ -33,7 +33,7 @@ function Home() {
           <Row className="border rounded  align-items-center">
             <Col className="flex-shrink-1">
               <Image
-                src={RANDOM_AVATAR}
+                src={randomAvatar()}
                 roundedCircle
                 width={65}
                 height={65}
@@ -51,7 +51,7 @@ function Home() {
             ))}
           </Row>
         </Col>
-        <Col sm={3} className="border rounded py-4">
+        <Col sm={3} className="border rounded py-4 h-50">
           <h4 className="font-weight-bold text-center">Suggested people</h4>
           <div className="d-flex flex-column">
             {profiles.data &&

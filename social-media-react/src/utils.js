@@ -1,1 +1,1 @@
-export const RANDOM_AVATAR = "https://i.pravatar.cc/300";
+export const randomAvatar = () =>  `https://i.pravatar.cc/300?img=${Math.floor(Math.random() * (60)) + 1}`;

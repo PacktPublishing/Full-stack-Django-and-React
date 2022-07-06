@@ -1,5 +1,5 @@
 import React from "react";
-import { RANDOM_AVATAR } from "../utils";
+import { randomAvatar } from "../utils";
 
 import { Navbar, Container, Image, NavDropdown, Nav } from "react-bootstrap";
 
@@ -15,7 +15,7 @@ function Navigationbar() {
             <NavDropdown
               title={
                 <Image
-                  src={RANDOM_AVATAR}
+                  src={randomAvatar()}
                   roundedCircle
                   width={36}
                   height={36}

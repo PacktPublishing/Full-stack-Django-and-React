@@ -2,7 +2,7 @@ import React from "react";
 import { PropTypes } from "prop-types";
 import { Card, Button, Image } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { RANDOM_AVATAR } from "../utils";
+import { randomAvatar } from "../utils";
 
 function Profile(props) {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ function Profile(props) {
     <Card className="border-0 p-2">
       <div className="d-flex ">
         <Image
-          src={RANDOM_AVATAR}
+          src={randomAvatar()}
           roundedCircle
           width={48}
           height={48}
