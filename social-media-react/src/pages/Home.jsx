@@ -45,8 +45,8 @@ function Home() {
             </Col>
           </Row>
           <Row className="my-4">
-            {posts.data?.results.map(post => (
-              <Post key={post.id} post={post} refresh={posts.mutate} />
+            {posts.data?.results.map((post, index) => (
+              <Post key={index} post={post} refresh={posts.mutate} />
             ))}
           </Row>
         </Col>
@@ -54,8 +54,8 @@ function Home() {
           <h4 className="font-weight-bold text-center">Suggested people</h4>
           <div className="d-flex flex-column">
             {profiles.data &&
-              profiles.data.results.map((profile) => (
-                <Profile key={profile.id} user={profile} />
+              profiles.data.results.map((profile, index) => (
+                <Profile key={index} user={profile} />
               ))}
           </div>
         </Col>

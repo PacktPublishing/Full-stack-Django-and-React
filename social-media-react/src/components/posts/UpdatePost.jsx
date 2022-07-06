@@ -34,7 +34,9 @@ function UpdatePost(props) {
     axiosService
       .put(`/post/${post.id}/`, data)
       .then(() => {
+        handleClose();
         setShowToast(true);
+        refresh();
       })
       .catch((error) => {
         console.log(error);
@@ -44,8 +46,9 @@ function UpdatePost(props) {
   return (
     <>
       <Dropdown.Item onClick={handleShow}>Modifier</Dropdown.Item>
+      
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton className="border-0" closeVariant="red">
+        <Modal.Header closeButton className="border-0">
           <Modal.Title>Update Post</Modal.Title>
         </Modal.Header>
         <Modal.Body className="border-0">

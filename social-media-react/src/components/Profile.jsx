@@ -9,7 +9,7 @@ function Profile(props) {
   const { user } = props;
 
   const handleNavigateToProfile = () => {
-    navigate(`/profile/${user.id}`);
+    // Navigate to the profile page
   };
 
   return (
@@ -32,12 +32,5 @@ function Profile(props) {
     </Card>
   );
 }
-
-Profile.propTypes = {
-  user: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-  }),
-};
 
 export default Profile;

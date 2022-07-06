@@ -6,11 +6,13 @@ import {
   LikeOutlined,
   MoreOutlined,
 } from "@ant-design/icons";
-import { Image, Card, Dropdown, Toast, ToastContainer } from "react-bootstrap";
+import { Image, Card, Dropdown } from "react-bootstrap";
 import { randomAvatar } from "../../utils";
 import axiosService from "../../helpers/axios";
 import { getUser } from "../../hooks/user.actions";
 import UpdatePost from "./UpdatePost";
+import Toaster from "../Toaster";
+
 
 const MoreToggleIcon = React.forwardRef(({ onClick }, ref) => (
   <a
@@ -144,19 +146,13 @@ function Post(props) {
           </div>
         </Card.Footer>
       </Card>
-      <ToastContainer position="top-center">
-        <Toast
-          onClose={() => setShowToast(false)}
-          show={showToast}
-          delay={3000}
-          autohide
-          bg="danger"
-        >
-          <Toast.Body>
-            <p className="text-white">Post Deleted 🔥</p>
-          </Toast.Body>
-        </Toast>
-      </ToastContainer>
+      <Toaster
+        title="Success!"
+        message="Post updated 🚀"
+        type="danger"
+        showToast={showToast}
+        onClose={() => setShowToast(false)}
+      />
     </>
   );
 }

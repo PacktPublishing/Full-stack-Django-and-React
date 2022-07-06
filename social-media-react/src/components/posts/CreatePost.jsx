@@ -56,7 +56,7 @@ function CreatePost(props) {
       </Form.Group>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton className="border-0" closeVariant="red">
+        <Modal.Header closeButton className="border-0">
           <Modal.Title>Create Post</Modal.Title>
         </Modal.Header>
         <Modal.Body className="border-0">
