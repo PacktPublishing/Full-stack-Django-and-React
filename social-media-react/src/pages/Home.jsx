@@ -1,24 +1,19 @@
 import React from "react";
 import Layout from "../components/Layout";
-import {
-  Row,
-  Col,
-  Image,
-} from "react-bootstrap";
+import { Row, Col, Image } from "react-bootstrap";
 import { randomAvatar } from "../utils";
 import useSWR from "swr";
 import { fetcher } from "../helpers/axios";
 import { getUser } from "../hooks/user.actions";
 import { Post } from "../components/posts";
 import CreatePost from "../components/posts/CreatePost";
-import Profile from "../components/Profile"
-
+import Profile from "../components/Profile";
 
 function Home() {
   const posts = useSWR("/post/", fetcher, {
     refreshInterval: 20000,
   });
-  const profiles = useSWR('/user/?limit=5', fetcher)
+  const profiles = useSWR("/user/?limit=5", fetcher);
 
   const user = getUser();
 

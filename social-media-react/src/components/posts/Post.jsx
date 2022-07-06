@@ -13,7 +13,6 @@ import { getUser } from "../../hooks/user.actions";
 import UpdatePost from "./UpdatePost";
 import Toaster from "../Toaster";
 
-
 const MoreToggleIcon = React.forwardRef(({ onClick }, ref) => (
   <a
     href="#"
@@ -77,7 +76,7 @@ function Post(props) {
                 <Dropdown>
                   <Dropdown.Toggle as={MoreToggleIcon}></Dropdown.Toggle>
                   <Dropdown.Menu>
-                    <UpdatePost post={post} refresh={refresh}/>
+                    <UpdatePost post={post} refresh={refresh} />
                     <Dropdown.Item
                       onClick={handleDelete}
                       className="text-danger"

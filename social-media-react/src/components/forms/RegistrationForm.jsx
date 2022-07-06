@@ -28,12 +28,11 @@ function RegistrationForm() {
       bio: form.bio,
     };
 
-    userActions.register(data)
-      .catch((err) => {
-        if (err.message) {
-          setError(err.request.response);
-        }
-      });
+    userActions.register(data).catch((err) => {
+      if (err.message) {
+        setError(err.request.response);
+      }
+    });
   };
 
   return (

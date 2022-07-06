@@ -21,7 +21,7 @@ function Profile(props) {
           width={48}
           height={48}
           className="my-3 border border-primary border-2"
-          />
+        />
         <Card.Body>
           <Card.Title className="fs-6">{user.name}</Card.Title>
           <Button variant="primary" onClick={handleNavigateToProfile}>
