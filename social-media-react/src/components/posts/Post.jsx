@@ -144,13 +144,13 @@ function Post(props) {
           </div>
         </Card.Footer>
       </Card>
-      <ToastContainer position="bottom-end">
+      <ToastContainer position="top-center">
         <Toast
           onClose={() => setShowToast(false)}
           show={showToast}
           delay={3000}
           autohide
-          bg="dander"
+          bg="danger"
         >
           <Toast.Body>
             <p className="text-white">Post Deleted 🔥</p>

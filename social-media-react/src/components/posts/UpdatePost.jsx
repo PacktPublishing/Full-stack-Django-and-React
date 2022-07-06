@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Button, Modal, Form, Toast, ToastContainer, Dropdown } from "react-bootstrap";
+import { Button, Modal, Form, Dropdown } from "react-bootstrap";
 import axiosService from "../../helpers/axios";
+import Toaster from "../Toaster";
 
 function UpdatePost(props) {
   const { post, refresh } = props;
@@ -33,8 +34,6 @@ function UpdatePost(props) {
     axiosService
       .put(`/post/${post.id}/`, data)
       .then(() => {
-        refresh();
-        handleClose();
         setShowToast(true);
       })
       .catch((error) => {
@@ -45,7 +44,6 @@ function UpdatePost(props) {
   return (
     <>
       <Dropdown.Item onClick={handleShow}>Modifier</Dropdown.Item>
-
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton className="border-0" closeVariant="red">
           <Modal.Title>Update Post</Modal.Title>
@@ -69,19 +67,13 @@ function UpdatePost(props) {
           </Button>
         </Modal.Footer>
       </Modal>
-      <ToastContainer position="bottom-end">
-        <Toast
-          onClose={() => setShowToast(false)}
-          show={showToast}
-          delay={3000}
-          autohide
-          bg="success"
-        >
-          <Toast.Body>
-            <p className="text-white">Post updated 🚀</p>
-          </Toast.Body>
-        </Toast>
-      </ToastContainer>
+      <Toaster
+        title="Success!"
+        message="Post updated 🚀"
+        type="success"
+        showToast={showToast}
+        onClose={() => setShowToast(false)}
+      />
     </>
   );
 }

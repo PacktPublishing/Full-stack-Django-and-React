@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { Button, Modal, Form, Toast, ToastContainer } from "react-bootstrap";
+import { Button, Modal, Form } from "react-bootstrap";
 import axiosService from "../../helpers/axios";
 import { getUser } from "../../hooks/user.actions";
+import Toaster from "../Toaster";
 
-function CreatePost() {
+function CreatePost(props) {
+  const { refresh } = props;
   const [show, setShow] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [validated, setValidated] = useState(false);
@@ -35,6 +37,7 @@ function CreatePost() {
         handleClose();
         setForm({});
         setShowToast(true);
+        refresh();
       })
       .catch((error) => {
         console.log(error);
@@ -75,21 +78,13 @@ function CreatePost() {
           </Button>
         </Modal.Footer>
       </Modal>
-      <ToastContainer position="bottom-end">
-        <Toast
-          onClose={() => setShowToast(false)}
-          show={showToast}
-          delay={3000}
-          autohide
-          bg="success"
-        >
-          <Toast.Body>
-            <p className="text-white">
-                Post created 🚀
-            </p>
-          </Toast.Body>
-        </Toast>
-      </ToastContainer>
+      <Toaster
+        title="Success!"
+        message="Post created 🚀"
+        showToast={showToast}
+        type="success"
+        onClose={() => setShowToast(false)}
+      />
     </>
   );
 }

@@ -35,13 +35,13 @@ function Home() {
               <Image
                 src={randomAvatar()}
                 roundedCircle
-                width={65}
-                height={65}
+                width={52}
+                height={52}
                 className="my-2"
               />
             </Col>
-            <Col sm={9} className="flex-grow-1">
-              <CreatePost />
+            <Col sm={10} className="flex-grow-1">
+              <CreatePost refresh={posts.mutate} />
             </Col>
           </Row>
           <Row className="my-4">
