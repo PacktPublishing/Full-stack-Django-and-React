@@ -18,12 +18,12 @@ function Profile(props) {
         <Image
           src={RANDOM_AVATAR}
           roundedCircle
-          width={65}
-          height={65}
-          className="my-3"
-        />
+          width={48}
+          height={48}
+          className="my-3 border border-primary border-2"
+          />
         <Card.Body>
-          <Card.Title>{user.name}</Card.Title>
+          <Card.Title className="fs-6">{user.name}</Card.Title>
           <Button variant="primary" onClick={handleNavigateToProfile}>
             See profile
           </Button>

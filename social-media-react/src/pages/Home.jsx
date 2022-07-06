@@ -11,12 +11,14 @@ import { fetcher } from "../helpers/axios";
 import { getUser } from "../hooks/user.actions";
 import { Post } from "../components/posts";
 import CreatePost from "../components/posts/CreatePost";
+import Profile from "../components/Profile"
 
 
 function Home() {
   const posts = useSWR("/post/", fetcher, {
     refreshInterval: 20000,
   });
+  const profiles = useSWR('/user/?limit=5', fetcher)
 
   const user = getUser();
 
@@ -49,7 +51,7 @@ function Home() {
             ))}
           </Row>
         </Col>
-        {/* <Col sm={3} className="border rounded py-4">
+        <Col sm={3} className="border rounded py-4">
           <h4 className="font-weight-bold text-center">Suggested people</h4>
           <div className="d-flex flex-column">
             {profiles.data &&
@@ -57,7 +59,7 @@ function Home() {
                 <Profile key={profile.id} user={profile} />
               ))}
           </div>
-        </Col> */}
+        </Col>
       </Row>
     </Layout>
   );
