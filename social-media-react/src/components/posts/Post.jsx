@@ -81,7 +81,7 @@ function Post(props) {
                       onClick={handleDelete}
                       className="text-danger"
                     >
-                      Supprimer
+                      Delete
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
@@ -147,7 +147,7 @@ function Post(props) {
       </Card>
       <Toaster
         title="Success!"
-        message="Post updated 🚀"
+        message="Post deleted 🚀"
         type="danger"
         showToast={showToast}
         onClose={() => setShowToast(false)}
