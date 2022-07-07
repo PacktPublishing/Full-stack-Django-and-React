@@ -7,6 +7,8 @@ import Toaster from "../Toaster";
 function CreatePost() {
   const [show, setShow] = useState(false);
   const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
+  const [toastType, setToastType] = useState("");
   const [validated, setValidated] = useState(false);
   const [form, setForm] = useState({});
 
@@ -34,11 +36,14 @@ function CreatePost() {
       .post("/post/", data)
       .then(() => {
         handleClose();
+        setToastMessage("Post created 🚀");
+        setToastType("success");
         setForm({});
         setShowToast(true);
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
+        setToastMessage("An error occurred.");
+        setToastType("danger");
       });
   };
 
@@ -77,10 +82,10 @@ function CreatePost() {
         </Modal.Footer>
       </Modal>
       <Toaster
-        title="Success!"
-        message="Post created 🚀"
+        title="Post!"
+        message={toastMessage}
         showToast={showToast}
-        type="success"
+        type={toastType}
         onClose={() => setShowToast(false)}
       />
     </>
