@@ -4,8 +4,7 @@ import axiosService from "../../helpers/axios";
 import { getUser } from "../../hooks/user.actions";
 import Toaster from "../Toaster";
 
-function CreatePost(props) {
-  const { refresh } = props;
+function CreatePost() {
   const [show, setShow] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [validated, setValidated] = useState(false);
@@ -37,7 +36,6 @@ function CreatePost(props) {
         handleClose();
         setForm({});
         setShowToast(true);
-        refresh();
       })
       .catch((error) => {
         console.log(error);
