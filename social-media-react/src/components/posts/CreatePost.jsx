@@ -4,10 +4,11 @@ import axiosService from "../../helpers/axios";
 import { getUser } from "../../hooks/user.actions";
 import Toaster from "../Toaster";
 
-function CreatePost(props) {
-  const { refresh } = props;
+function CreatePost() {
   const [show, setShow] = useState(false);
   const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
+  const [toastType, setToastType] = useState("");
   const [validated, setValidated] = useState(false);
   const [form, setForm] = useState({});
 
@@ -35,12 +36,14 @@ function CreatePost(props) {
       .post("/post/", data)
       .then(() => {
         handleClose();
+        setToastMessage("Post created 🚀");
+        setToastType("success");
         setForm({});
         setShowToast(true);
-        refresh();
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
+        setToastMessage("An error occurred.");
+        setToastType("danger");
       });
   };
 
@@ -73,16 +76,16 @@ function CreatePost(props) {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleSubmit}>
+          <Button variant="primary" onClick={handleSubmit} disabled={form.body === undefined}>
             Post
           </Button>
         </Modal.Footer>
       </Modal>
       <Toaster
-        title="Success!"
-        message="Post created 🚀"
+        title="Post!"
+        message={toastMessage}
         showToast={showToast}
-        type="success"
+        type={toastType}
         onClose={() => setShowToast(false)}
       />
     </>

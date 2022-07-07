@@ -45,7 +45,7 @@ function UpdatePost(props) {
 
   return (
     <>
-      <Dropdown.Item onClick={handleShow}>Modifier</Dropdown.Item>
+      <Dropdown.Item onClick={handleShow}>Modify</Dropdown.Item>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton className="border-0">
