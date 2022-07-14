@@ -76,7 +76,11 @@ function CreatePost() {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleSubmit} disabled={form.body === undefined}>
+          <Button
+            variant="primary"
+            onClick={handleSubmit}
+            disabled={form.body === undefined}
+          >
             Post
           </Button>
         </Modal.Footer>
