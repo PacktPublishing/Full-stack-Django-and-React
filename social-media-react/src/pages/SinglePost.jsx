@@ -7,6 +7,7 @@ import useSWR from "swr";
 import { fetcher } from "../helpers/axios";
 import { Post } from "../components/posts";
 import CreateComment from "../components/comments/CreateComment";
+import Comment from "../components/comments/Comment";
 
 function SinglePost() {
   const { postId } = useParams();
@@ -23,8 +24,8 @@ function SinglePost() {
             <Post post={post.data} refresh={post.mutate} isSinglePost />
             <CreateComment postId={post.data?.id} refresh={comments.mutate} />
             {
-              comments.data && comments.data.results.map(() => 
-                <div>Comment</div>
+              comments.data && comments.data.results.map((comment, index) => 
+                <Comment postId={post.data?.id} comment={comment} refresh={comments.mutate} />
               )
             }
           </Col>

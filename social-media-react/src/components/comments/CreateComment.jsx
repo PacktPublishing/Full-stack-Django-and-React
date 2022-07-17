@@ -34,9 +34,9 @@ function CreateComment(props) {
     axiosService
       .post(`/post/${postId}/comment/`, data)
       .then(() => {
+        setForm({});
         setToastMessage("Comment posted successfully🚀");
         setToastType("success");
-        setForm({});
         refresh();
         setShowToast(true);
       })
@@ -66,6 +66,8 @@ function CreateComment(props) {
             className="py-2 rounded-pill border-primary"
             type="text"
             placeholder="Write a comment"
+            value={form.body}
+            name="body"
             onChange={(e) => setForm({ ...form, body: e.target.value })}
           />
         </Form.Group>
