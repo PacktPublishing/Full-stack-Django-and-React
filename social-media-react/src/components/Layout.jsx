@@ -21,7 +21,7 @@ function Layout(props) {
           onClick={() => navigate(-1)}
         />
       )}
-      <div className="container m-5">{props.children}</div>
+      <div className="container my-5">{props.children}</div>
     </div>
   );
 }
