@@ -50,7 +50,12 @@ function UpdateComment(props) {
         refresh();
       })
       .catch((error) => {
-        console.log(error);
+        setToaster({
+          type: "danger",
+          message: "An error occurred.",
+          show: true,
+          title: "Comment Error",
+        });
       });
   };
 

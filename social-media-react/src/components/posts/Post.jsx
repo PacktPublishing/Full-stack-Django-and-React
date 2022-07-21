@@ -47,14 +47,21 @@ function Post(props) {
       .delete(`/post/${post.id}/`)
       .then(() => {
         setToaster({
-          type: "danger",
+          type: "warning",
           message: "Post deleted 🚀",
           show: true,
           title: "Post Deleted",
         });
         refresh();
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        setToaster({
+          type: "danger",
+          message: "An error occurred.",
+          show: true,
+          title: "Post Error",
+        });
+      });
   };
 
   return (

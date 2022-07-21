@@ -40,7 +40,14 @@ function Comment(props) {
         });
         refresh();
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        setToaster({
+          type: "warning",
+          message: "Comment deleted 🚀",
+          show: true,
+          title: "Comment Deleted",
+        });
+      });
   };
 
   return (
