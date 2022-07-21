@@ -4,6 +4,7 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 import Home from "./pages/Home";
 import Registration from "./pages/Registration";
 import Login from "./pages/Login";
+import SinglePost from "./pages/SinglePost";
 
 function App() {
   return (
@@ -13,6 +14,14 @@ function App() {
         element={
           <ProtectedRoute>
             <Home />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/post/:postId/"
+        element={
+          <ProtectedRoute>
+            <SinglePost />
           </ProtectedRoute>
         }
       />

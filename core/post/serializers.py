@@ -11,6 +11,10 @@ class PostSerializer(AbstractSerializer):
     author = serializers.SlugRelatedField(queryset=User.objects.all(), slug_field='public_id')
     liked = serializers.SerializerMethodField()
     likes_count = serializers.SerializerMethodField()
+    comments_count = serializers.SerializerMethodField()
+
+    def get_comments_count(self, instance):
+        return instance.comment_set.count()
 
     def get_liked(self, instance):
 
@@ -47,5 +51,5 @@ class PostSerializer(AbstractSerializer):
     class Meta:
         model = Post
         # List of all the fields that can be included in a request or a response
-        fields = ['id', 'author', 'body', 'edited', 'liked', 'likes_count', 'created', 'updated']
+        fields = ['id', 'author', 'body', 'edited', 'liked', 'likes_count', 'comments_count', 'created', 'updated']
         read_only_fields = ["edited"]

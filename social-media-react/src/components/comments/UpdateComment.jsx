@@ -1,27 +1,31 @@
-import React, { useContext, useState } from "react";
+import React, { useState, useContext } from "react";
 import { Button, Modal, Form, Dropdown } from "react-bootstrap";
 import axiosService from "../../helpers/axios";
-import {Context} from "../Layout";
 
-function UpdatePost(props) {
-  const { post, refresh } = props;
+import { Context } from "../Layout";
+
+
+function UpdateComment(props) {
+  const { postId, comment, refresh } = props;
   const [show, setShow] = useState(false);
   const [validated, setValidated] = useState(false);
   const [form, setForm] = useState({
-    author: post.author.id,
-    body: post.body,
+    author: comment.author.id,
+    body: comment.body,
+    post: postId
   });
 
   const { toaster, setToaster } = useContext(Context);
+
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const updatePostForm = event.currentTarget;
+    const updateCommentForm = event.currentTarget;
 
-    if (updatePostForm.checkValidity() === false) {
+    if (updateCommentForm.checkValidity() === false) {
       event.stopPropagation();
     }
 
@@ -30,15 +34,16 @@ function UpdatePost(props) {
     const data = {
       author: form.author,
       body: form.body,
+      post: postId
     };
 
     axiosService
-      .put(`/post/${post.id}/`, data)
+      .put(`/post/${postId}/comment/${comment.id}/`, data)
       .then(() => {
         handleClose();
         setToaster({
           type: "success",
-          message: "Post updated 🚀",
+          message: "Comment updated 🚀",
           show: true,
           title: "Success!",
         });
@@ -49,7 +54,7 @@ function UpdatePost(props) {
           type: "danger",
           message: "An error occurred.",
           show: true,
-          title: "Post Error",
+          title: "Comment Error",
         });
       });
   };
@@ -85,4 +90,4 @@ function UpdatePost(props) {
   );
 }
 
-export default UpdatePost;
+export default UpdateComment;
