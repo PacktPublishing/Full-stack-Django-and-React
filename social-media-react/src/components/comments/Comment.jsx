@@ -1,5 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { format } from "timeago.js";
+import { LikeOutlined, LikeFilled } from "@ant-design/icons";
 import { Image, Card, Dropdown } from "react-bootstrap";
 import { randomAvatar } from "../../utils";
 import axiosService from "../../helpers/axios";
@@ -13,6 +14,15 @@ function Comment(props) {
   const { toaster, setToaster } = useContext(Context);
 
   const user = getUser();
+
+  const handleLikeClick = (action) => {
+    axiosService
+      .post(`/post/${postId}/comment/${comment.id}/${action}/`)
+      .then(() => {
+        refresh();
+      })
+      .catch((err) => console.error(err));
+  };
 
   const handleDelete = () => {
     axiosService
@@ -74,7 +84,49 @@ function Comment(props) {
           )}
         </Card.Title>
         <Card.Text>{comment.body}</Card.Text>
+        <div className="d-flex flex-row justify-content-between">
+          <div className="d-flex flex-row">
+            <LikeFilled
+              style={{
+                color: "#fff",
+                backgroundColor: "#0D6EFD",
+                borderRadius: "50%",
+                width: "18px",
+                height: "18px",
+                fontSize: "75%",
+                padding: "2px",
+                margin: "3px",
+              }}
+            />
+            <p className="ms-1 fs-6">
+              <small>{comment.likes_count} like</small>
+            </p>
+          </div>
+        </div>
       </Card.Body>
+      <Card.Footer className="d-flex bg-white w-50 justify-content-between border-0">
+        <div className="d-flex flex-row">
+          <LikeOutlined
+            style={{
+              width: "24px",
+              height: "24px",
+              padding: "2px",
+              fontSize: "20px",
+              color: comment.liked ? "#0D6EFD" : "#C4C4C4",
+            }}
+            onClick={() => {
+              if (comment.liked) {
+                handleLikeClick("remove_like");
+              } else {
+                handleLikeClick("like");
+              }
+            }}
+          />
+          <p className="ms-1">
+            <small>Like</small>
+          </p>
+        </div>
+      </Card.Footer>
     </Card>
   );
 }
