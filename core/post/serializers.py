@@ -23,7 +23,7 @@ class PostSerializer(AbstractSerializer):
         if request is None or request.user.is_anonymous:
             return False
 
-        return request.user.has_liked(instance)
+        return request.user.has_liked_post(instance)
 
     def get_likes_count(self, instance):
         return instance.liked_by.count()

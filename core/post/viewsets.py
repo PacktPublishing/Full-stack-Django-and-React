@@ -34,7 +34,7 @@ class PostViewSet(AbstractViewSet):
         post = self.get_object()
         user = self.request.user
 
-        user.like(post)
+        user.like_post(post)
 
         serializer = self.serializer_class(post)
 
@@ -45,7 +45,7 @@ class PostViewSet(AbstractViewSet):
         post = self.get_object()
         user = self.request.user
 
-        user.remove_like(post)
+        user.remove_like_post(post)
 
         serializer = self.serializer_class(post)
 

@@ -6,7 +6,6 @@ import { randomAvatar } from "../../utils";
 
 import { Context } from "../Layout";
 
-
 function CreateComment(props) {
   const { postId, refresh } = props;
   const [avatar, setAvatar] = useState(randomAvatar());
@@ -36,7 +35,7 @@ function CreateComment(props) {
     axiosService
       .post(`/post/${postId}/comment/`, data)
       .then(() => {
-        setForm({...form, body: ""});
+        setForm({ ...form, body: "" });
         setToaster({
           type: "success",
           message: "Comment posted successfully🚀",
@@ -46,7 +45,6 @@ function CreateComment(props) {
         refresh();
       })
       .catch(() => {
-
         setToaster({
           type: "danger",
           message: "",
@@ -57,42 +55,40 @@ function CreateComment(props) {
   };
 
   return (
-    <>
-      <Form
-        className="d-flex flex-row justify-content-between"
-        noValidate
-        validated={validated}
-        onSubmit={handleSubmit}
-      >
-        <Image
-          src={avatar}
-          roundedCircle
-          width={48}
-          height={48}
-          className="my-2"
+    <Form
+      className="d-flex flex-row justify-content-between"
+      noValidate
+      validated={validated}
+      onSubmit={handleSubmit}
+    >
+      <Image
+        src={avatar}
+        roundedCircle
+        width={48}
+        height={48}
+        className="my-2"
+      />
+      <Form.Group className="m-3 w-75">
+        <Form.Control
+          className="py-2 rounded-pill border-primary"
+          type="text"
+          placeholder="Write a comment"
+          value={form.body}
+          name="body"
+          onChange={(e) => setForm({ ...form, body: e.target.value })}
         />
-        <Form.Group className="m-3 w-75">
-          <Form.Control
-            className="py-2 rounded-pill border-primary"
-            type="text"
-            placeholder="Write a comment"
-            value={form.body}
-            name="body"
-            onChange={(e) => setForm({ ...form, body: e.target.value })}
-          />
-        </Form.Group>
-        <div className="m-auto">
-          <Button
-            variant="primary"
-            onClick={handleSubmit}
-            disabled={form.body === undefined}
-            size="small"
-          >
-            Comment
-          </Button>
-        </div>
-      </Form>
-    </>
+      </Form.Group>
+      <div className="m-auto">
+        <Button
+          variant="primary"
+          onClick={handleSubmit}
+          disabled={form.body === undefined}
+          size="small"
+        >
+          Comment
+        </Button>
+      </div>
+    </Form>
   );
 }
 
