@@ -54,5 +54,5 @@ class CommentSerializer(AbstractSerializer):
     class Meta:
         model = Comment
         # List of all the fields that can be included in a request or a response
-        fields = ['id', 'post', 'author', 'body', 'edited', 'created', 'updated']
+        fields = ['id', 'post', 'author', 'body', 'edited', 'liked', 'likes_count', 'created', 'updated']
         read_only_fields = ["edited"]
