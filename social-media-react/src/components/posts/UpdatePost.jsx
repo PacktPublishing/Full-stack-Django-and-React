@@ -1,17 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Modal, Form, Dropdown } from "react-bootstrap";
 import axiosService from "../../helpers/axios";
-import Toaster from "../Toaster";
+import {Context} from "../Layout";
 
 function UpdatePost(props) {
   const { post, refresh } = props;
   const [show, setShow] = useState(false);
-  const [showToast, setShowToast] = useState(false);
   const [validated, setValidated] = useState(false);
   const [form, setForm] = useState({
     author: post.author.id,
     body: post.body,
   });
+
+  const { toaster, setToaster } = useContext(Context);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -35,7 +36,12 @@ function UpdatePost(props) {
       .put(`/post/${post.id}/`, data)
       .then(() => {
         handleClose();
-        setShowToast(true);
+        setToaster({
+          type: "success",
+          message: "Post updated 🚀",
+          show: true,
+          title: "Success!",
+        });
         refresh();
       })
       .catch((error) => {
@@ -70,13 +76,6 @@ function UpdatePost(props) {
           </Button>
         </Modal.Footer>
       </Modal>
-      <Toaster
-        title="Success!"
-        message="Post updated 🚀"
-        type="success"
-        showToast={showToast}
-        onClose={() => setShowToast(false)}
-      />
     </>
   );
 }

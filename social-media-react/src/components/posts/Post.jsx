@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { format } from "timeago.js";
 import {
   LikeFilled,
@@ -12,7 +12,7 @@ import { randomAvatar } from "../../utils";
 import axiosService from "../../helpers/axios";
 import { getUser } from "../../hooks/user.actions";
 import UpdatePost from "./UpdatePost";
-import Toaster from "../Toaster";
+import { Context } from "../Layout";
 
 const MoreToggleIcon = React.forwardRef(({ onClick }, ref) => (
   <a
@@ -29,7 +29,7 @@ const MoreToggleIcon = React.forwardRef(({ onClick }, ref) => (
 
 function Post(props) {
   const { post, refresh, isSinglePost } = props;
-  const [showToast, setShowToast] = useState(false);
+  const { toaster, setToaster } = useContext(Context);
 
   const user = getUser();
 
@@ -46,7 +46,12 @@ function Post(props) {
     axiosService
       .delete(`/post/${post.id}/`)
       .then(() => {
-        setShowToast(true);
+        setToaster({
+          type: "danger",
+          message: "Post deleted 🚀",
+          show: true,
+          title: "Post Deleted",
+        });
         refresh();
       })
       .catch((err) => console.error(err));
