@@ -1,18 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Button, Form, Image } from "react-bootstrap";
 import axiosService from "../../helpers/axios";
 import { getUser } from "../../hooks/user.actions";
-import Toaster from "../Toaster";
 import { randomAvatar } from "../../utils";
+
+import { Context } from "../Layout";
+
 
 function CreateComment(props) {
   const { postId, refresh } = props;
   const [avatar, setAvatar] = useState(randomAvatar());
-  const [showToast, setShowToast] = useState(false);
-  const [toastMessage, setToastMessage] = useState("");
-  const [toastType, setToastType] = useState("");
   const [validated, setValidated] = useState(false);
   const [form, setForm] = useState({});
+
+  const { toaster, setToaster } = useContext(Context);
 
   const user = getUser();
 
@@ -36,14 +37,22 @@ function CreateComment(props) {
       .post(`/post/${postId}/comment/`, data)
       .then(() => {
         setForm({...form, body: ""});
-        setToastMessage("Comment posted successfully🚀");
-        setToastType("success");
+        setToaster({
+          type: "success",
+          message: "Comment posted successfully🚀",
+          show: true,
+          title: "Comment!",
+        });
         refresh();
-        setShowToast(true);
       })
       .catch(() => {
-        setToastMessage("An error occurred.");
-        setToastType("danger");
+
+        setToaster({
+          type: "danger",
+          message: "",
+          show: true,
+          title: "An error occurred.!",
+        });
       });
   };
 
@@ -83,13 +92,6 @@ function CreateComment(props) {
           </Button>
         </div>
       </Form>
-      <Toaster
-        title="Comment!"
-        message={toastMessage}
-        showToast={showToast}
-        type={toastType}
-        onClose={() => setShowToast(false)}
-      />
     </>
   );
 }

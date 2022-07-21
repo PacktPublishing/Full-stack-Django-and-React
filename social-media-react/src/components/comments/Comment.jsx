@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { format } from "timeago.js";
 import { MoreOutlined } from "@ant-design/icons";
 import { Image, Card, Dropdown } from "react-bootstrap";
 import { randomAvatar } from "../../utils";
 import axiosService from "../../helpers/axios";
 import { getUser } from "../../hooks/user.actions";
-import Toaster from "../Toaster";
 import UpdateComment from "./UpdateComment";
+
+import { Context } from "../Layout";
 
 const MoreToggleIcon = React.forwardRef(({ onClick }, ref) => (
   <a
@@ -23,7 +24,7 @@ const MoreToggleIcon = React.forwardRef(({ onClick }, ref) => (
 
 function Comment(props) {
   const { postId, comment, refresh } = props;
-  const [showToast, setShowToast] = useState(false);
+  const { toaster, setToaster } = useContext(Context);
 
   const user = getUser();
 
@@ -31,7 +32,12 @@ function Comment(props) {
     axiosService
       .delete(`/post/${postId}/comment/${comment.id}/`)
       .then(() => {
-        setShowToast(true);
+        setToaster({
+          type: "danger",
+          message: "Comment deleted 🚀",
+          show: true,
+          title: "Comment Deleted",
+        });
         refresh();
       })
       .catch((err) => console.error(err));
@@ -77,13 +83,6 @@ function Comment(props) {
           <Card.Text>{comment.body}</Card.Text>
         </Card.Body>
       </Card>
-      <Toaster
-        title="Success!"
-        message="Post deleted 🚀"
-        type="danger"
-        showToast={showToast}
-        onClose={() => setShowToast(false)}
-      />
     </>
   );
 }
