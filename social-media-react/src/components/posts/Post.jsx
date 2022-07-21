@@ -159,13 +159,6 @@ function Post(props) {
           )}
         </Card.Footer>
       </Card>
-      <Toaster
-        title="Success!"
-        message="Post deleted 🚀"
-        type="danger"
-        showToast={showToast}
-        onClose={() => setShowToast(false)}
-      />
     </>
   );
 }

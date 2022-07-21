@@ -3,9 +3,9 @@ import Navigationbar from "./Navbar";
 
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
-import Toaster from "../Toaster";
+import Toaster from "./Toaster";
 
-const Context = createContext("unknown");
+export const Context = createContext("unknown");
 
 function Layout(props) {
   const navigate = useNavigate();
