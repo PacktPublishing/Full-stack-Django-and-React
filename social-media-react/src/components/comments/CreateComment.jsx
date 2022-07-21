@@ -7,6 +7,7 @@ import { randomAvatar } from "../../utils";
 
 function CreateComment(props) {
   const { postId, refresh } = props;
+  const [avatar, setAvatar] = useState(randomAvatar());
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
   const [toastType, setToastType] = useState("");
@@ -34,7 +35,7 @@ function CreateComment(props) {
     axiosService
       .post(`/post/${postId}/comment/`, data)
       .then(() => {
-        setForm({});
+        setForm({...form, body: ""});
         setToastMessage("Comment posted successfully🚀");
         setToastType("success");
         refresh();
@@ -55,7 +56,7 @@ function CreateComment(props) {
         onSubmit={handleSubmit}
       >
         <Image
-          src={randomAvatar()}
+          src={avatar}
           roundedCircle
           width={48}
           height={48}

@@ -38,7 +38,6 @@ function UpdateComment(props) {
       .then(() => {
         handleClose();
         setShowToast(true);
-        setForm({});
         refresh();
       })
       .catch((error) => {
