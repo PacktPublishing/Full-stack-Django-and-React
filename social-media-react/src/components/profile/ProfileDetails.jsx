@@ -1,8 +1,7 @@
 import React from "react";
 import {getUser} from "../../hooks/user.actions";
 import {randomAvatar} from "../../utils";
-import {format} from "timeago.js";
-import { Image } from "react-bootstrap";
+import { Button, Image } from "react-bootstrap";
 
 
 function ProfileDetails () {
@@ -10,19 +9,22 @@ function ProfileDetails () {
 
     return (
         <div>
-            <div className="d-flex flex-row">
+            <div className="d-flex flex-row border-bottom p-5">
                 <Image
                     src={randomAvatar()}
                     roundedCircle
-                    width={48}
-                    height={48}
-                    className="me-2 border border-primary border-2"
+                    width={120}
+                    height={120}
+                    className="me-5 border border-primary border-2"
                 />
                 <div className="d-flex flex-column justify-content-start align-self-center mt-2">
-                    <p className="fs-6 m-0">{user.name}</p>
-                    <p className="fs-6 fw-lighter">
-                        <small>{format(user.created)}</small>
+                    <p className="fs-4 m-0">{user.name}</p>
+                    <p className="fs-5">
+                        <small>{user.posts_count} posts</small>
                     </p>
+                    <Button variant="primary" size="sm" className="w-25">
+                        Edit
+                    </Button>
                 </div>
             </div>
         </div>
