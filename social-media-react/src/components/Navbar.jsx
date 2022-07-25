@@ -25,7 +25,7 @@ function Navigationbar() {
             <NavDropdown
               title={
                 <Image
-                  src={randomAvatar()}
+                  src={user.avatar}
                   roundedCircle
                   width={36}
                   height={36}

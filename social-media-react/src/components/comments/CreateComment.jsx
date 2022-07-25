@@ -2,13 +2,11 @@ import React, { useState, useContext } from "react";
 import { Button, Form, Image } from "react-bootstrap";
 import axiosService from "../../helpers/axios";
 import { getUser } from "../../hooks/user.actions";
-import { randomAvatar } from "../../utils";
 
 import { Context } from "../Layout";
 
 function CreateComment(props) {
   const { postId, refresh } = props;
-  const [avatar, setAvatar] = useState(randomAvatar());
   const [validated, setValidated] = useState(false);
   const [form, setForm] = useState({});
 
@@ -62,7 +60,7 @@ function CreateComment(props) {
       onSubmit={handleSubmit}
     >
       <Image
-        src={avatar}
+        src={user.avatar}
         roundedCircle
         width={48}
         height={48}

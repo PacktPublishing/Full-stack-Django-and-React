@@ -1,6 +1,5 @@
 import React from "react";
 import {getUser} from "../../hooks/user.actions";
-import {randomAvatar} from "../../utils";
 import { Button, Image } from "react-bootstrap";
 
 
@@ -11,7 +10,7 @@ function ProfileDetails () {
         <div>
             <div className="d-flex flex-row border-bottom p-5">
                 <Image
-                    src={randomAvatar()}
+                    src={user.avatar}
                     roundedCircle
                     width={120}
                     height={120}

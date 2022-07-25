@@ -28,7 +28,7 @@ function Home() {
           <Row className="border rounded  align-items-center">
             <Col className="flex-shrink-1">
               <Image
-                src={randomAvatar()}
+                src={user.avatar}
                 roundedCircle
                 width={52}
                 height={52}

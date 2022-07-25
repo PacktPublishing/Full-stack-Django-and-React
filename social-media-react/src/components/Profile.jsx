@@ -1,21 +1,20 @@
 import React from "react";
 import { Card, Button, Image } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { randomAvatar } from "../utils";
 
 function Profile(props) {
   const navigate = useNavigate();
   const { user } = props;
 
   const handleNavigateToProfile = () => {
-    // Navigate to the profile page
+    navigate(`/profile/${user.id}/`)
   };
 
   return (
     <Card className="border-0 p-2">
       <div className="d-flex ">
         <Image
-          src={randomAvatar()}
+          src={user.avatar}
           roundedCircle
           width={48}
           height={48}
