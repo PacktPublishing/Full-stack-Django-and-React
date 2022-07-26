@@ -12,6 +12,7 @@ class PostViewSet(AbstractViewSet):
     http_method_names = ('post', 'get', 'put', 'delete')
     permission_classes = (UserPermission,)
     serializer_class = PostSerializer
+    filterset_fields = ['author__public_id']
 
     def get_queryset(self):
         return Post.objects.all()
@@ -50,4 +51,3 @@ class PostViewSet(AbstractViewSet):
         serializer = self.serializer_class(post)
 
         return Response(serializer.data, status=status.HTTP_200_OK)
-

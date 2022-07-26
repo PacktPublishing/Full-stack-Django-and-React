@@ -7,3 +7,5 @@ djangorestframework-simplejwt==5.0.0
 drf-nested-routers==0.93.4
 pytest-django==4.5.2
 django-cors-headers==3.11.0
+
+libgravatar==1.0.0

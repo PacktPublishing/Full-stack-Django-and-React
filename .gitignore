@@ -130,3 +130,7 @@ dmypy.json
 
 # Pycharm
 .idea/
+
+# default files
+media/
+uploads/
