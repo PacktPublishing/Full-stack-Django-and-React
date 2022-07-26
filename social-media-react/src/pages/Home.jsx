@@ -1,7 +1,6 @@
 import React from "react";
 import Layout from "../components/Layout";
 import { Row, Col, Image } from "react-bootstrap";
-import { randomAvatar } from "../utils";
 import useSWR from "swr";
 import { fetcher } from "../helpers/axios";
 import { getUser } from "../hooks/user.actions";
