@@ -6,7 +6,7 @@ import UpdateProfileForm from "../components/profile/UpdateProfileForm";
 import { fetcher } from "../helpers/axios";
 import { Row, Col } from "react-bootstrap";
 
-function UpdateProfile() {
+function EditProfile() {
   const { profileId } = useParams();
 
   const profile = useSWR(`/user/${profileId}/`, fetcher);
@@ -26,4 +26,4 @@ function UpdateProfile() {
   );
 }
 
-export default UpdateProfile;
+export default EditProfile;
