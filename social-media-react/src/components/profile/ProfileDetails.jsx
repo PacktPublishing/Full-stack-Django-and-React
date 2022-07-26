@@ -1,10 +1,12 @@
 import React from "react";
 import {getUser} from "../../hooks/user.actions";
 import { Button, Image } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 
 function ProfileDetails () {
     const user = getUser();
+    const navigate = useNavigate();
 
     return (
         <div>
@@ -21,7 +23,12 @@ function ProfileDetails () {
                     <p className="fs-5">
                         <small>{user.posts_count} posts</small>
                     </p>
-                    <Button variant="primary" size="sm" className="w-25">
+                    <Button 
+                        variant="primary" 
+                        size="sm" 
+                        className="w-25"
+                        onClick={() => navigate(`/profile/${user.id}/edit/`)}
+                    >
                         Edit
                     </Button>
                 </div>

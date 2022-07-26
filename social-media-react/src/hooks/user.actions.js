@@ -29,6 +29,14 @@ function useUserActions() {
     });
   }
 
+  // Edit the user
+  function editUser(data, userId) {
+    return axios.post(`${baseURL}/user/${userId}/`, data).then((res) => {
+      // Registering the account and tokens in the store
+      setUserData(res.data);
+    });
+  }
+
   // Logout the user
   function logout() {
     localStorage.removeItem("auth");

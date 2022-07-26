@@ -7,17 +7,21 @@ import { fetcher } from "../helpers/axios";
 import { Row, Col } from "react-bootstrap";
 
 function UpdateProfile() {
-    const { profileId } = useParams();
+  const { profileId } = useParams();
 
-  const profile = useSWR(`/users/${profileId}/`, fetcher);
+  const profile = useSWR(`/user/${profileId}/`, fetcher);
 
   return (
     <Layout>
-      <Row className="justify-content-evenly">
-        <Col sm={9}>
-          <UpdateProfileForm profile={profile} />
-        </Col>
-      </Row>
+      {profile.data ? (
+        <Row className="justify-content-evenly">
+          <Col sm={9}>
+            <UpdateProfileForm profile={profile.data} />
+          </Col>
+        </Row>
+      ) : (
+        <div>Loading...</div>
+      )}
     </Layout>
   );
 }
