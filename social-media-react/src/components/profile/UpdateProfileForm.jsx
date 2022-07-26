@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 
 function UpdateProfileForm(props) {
-    const { user } = props;
+    const { profile } = props;
 
 
     return (

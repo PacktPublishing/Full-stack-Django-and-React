@@ -6,6 +6,7 @@ import Registration from "./pages/Registration";
 import Login from "./pages/Login";
 import SinglePost from "./pages/SinglePost";
 import Profile from "./pages/Profiile";
+import UpdateProfile from "./pages/UpdateProfile";
 
 function App() {
     return (
@@ -31,6 +32,14 @@ function App() {
                 element={
                     <ProtectedRoute>
                         <Profile/>
+                    </ProtectedRoute>
+                }
+            />
+            <Route
+                path="/profile/:profileId/edit/"
+                element={
+                    <ProtectedRoute>
+                        <UpdateProfile/>
                     </ProtectedRoute>
                 }
             />
