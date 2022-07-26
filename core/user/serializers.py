@@ -1,5 +1,6 @@
 from libgravatar import Gravatar
 from rest_framework import serializers
+from django.conf import settings
 
 from core.abstract.serializers import AbstractSerializer
 from core.user.models import User
@@ -9,6 +10,7 @@ class UserSerializer(AbstractSerializer):
     posts_count = serializers.SerializerMethodField()
 
     def get_gravatar(self, instance):
+        print(self.context['request'])
         return Gravatar(instance.username).get_image(default='wavatar',
                                                      filetype_extension=True,
                                                      use_ssl=True)
@@ -20,7 +22,10 @@ class UserSerializer(AbstractSerializer):
         representation = super().to_representation(instance)
         if not representation['avatar']:
             representation['avatar'] = self.get_gravatar(instance)
-
+            return representation
+        if settings.DEBUG:  # debug enabled for dev
+            request = self.context.get('request')
+            representation['avatar'] = request.build_absolute_uri(representation['avatar'])
         return representation
 
     class Meta:
