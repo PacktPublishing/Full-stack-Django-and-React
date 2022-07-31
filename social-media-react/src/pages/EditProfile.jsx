@@ -12,7 +12,7 @@ function EditProfile() {
   const profile = useSWR(`/user/${profileId}/`, fetcher);
 
   return (
-    <Layout>
+    <Layout hasNavigationBack>
       {profile.data ? (
         <Row className="justify-content-evenly">
           <Col sm={9}>
