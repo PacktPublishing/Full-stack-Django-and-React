@@ -6,7 +6,7 @@ import { fetcher } from "../helpers/axios";
 import { getUser } from "../hooks/user.actions";
 import { Post } from "../components/posts";
 import CreatePost from "../components/posts/CreatePost";
-import Profile from "../components/Profile";
+import ProfileCard from "../components/profile/ProfileCard";
 
 function Home() {
   const posts = useSWR("/post/", fetcher, {
@@ -49,7 +49,7 @@ function Home() {
           <div className="d-flex flex-column">
             {profiles.data &&
               profiles.data.results.map((profile, index) => (
-                <Profile key={index} user={profile} />
+                <ProfileCard key={index} user={profile} />
               ))}
           </div>
         </Col>

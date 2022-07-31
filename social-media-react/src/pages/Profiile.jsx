@@ -10,6 +10,8 @@ import { Row, Col } from "react-bootstrap";
 function Profile() {
   const { profileId } = useParams();
 
+  const user = useSWR(`/user/${profileId}/`, fetcher);
+
   const posts = useSWR(`/post/?author__public_id=${profileId}`, fetcher, {
     refreshInterval: 20000
   });
@@ -18,7 +20,7 @@ function Profile() {
     <Layout hasNavigationBack>
       <Row className="justify-content-evenly">
         <Col sm={9}>
-          <ProfileDetails />
+          <ProfileDetails user={user.data}/>
           <div>
             <Row className="my-4">
               {posts.data?.results.map((post, index) => (

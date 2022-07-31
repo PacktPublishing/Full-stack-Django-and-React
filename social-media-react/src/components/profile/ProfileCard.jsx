@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Button, Image } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-function Profile(props) {
+function ProfileCard(props) {
   const navigate = useNavigate();
   const { user } = props;
 
@@ -31,4 +31,4 @@ function Profile(props) {
   );
 }
 
-export default Profile;
+export default ProfileCard;
