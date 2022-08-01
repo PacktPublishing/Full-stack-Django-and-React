@@ -1,5 +1,5 @@
 import React, { createContext, useMemo, useState } from "react";
-import Navigationbar from "./Navbar";
+import NavigationBar from "./Navbar";
 
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
@@ -22,7 +22,7 @@ function Layout(props) {
   return (
     <Context.Provider value={value}>
       <div>
-        <Navigationbar />
+        <NavigationBar />
         {hasNavigationBack && (
           <ArrowLeftOutlined
             style={{

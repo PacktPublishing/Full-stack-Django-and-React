@@ -1,15 +1,11 @@
 import React from "react";
 
 import { Navbar, Container, Image, NavDropdown, Nav } from "react-bootstrap";
-import {Link, useNavigate} from "react-router-dom";
-import {getUser} from "../hooks/user.actions";
+import { Link } from "react-router-dom";
+import {getUser, useUserActions} from "../hooks/user.actions";
 
-function Navigationbar() {
-  const navigate = useNavigate();
-  const handleLogout = () => {
-    localStorage.removeItem("auth");
-    navigate("/login/");
-  };
+function NavigationBar() {
+  const userActions = useUserActions();
 
   const user = getUser();
 
@@ -32,7 +28,7 @@ function Navigationbar() {
               }
             >
               <NavDropdown.Item as={Link} to={`/profile/${user.id}/`}>Profile</NavDropdown.Item>
-              <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
+              <NavDropdown.Item onClick={userActions.logout}>Logout</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
@@ -41,4 +37,4 @@ function Navigationbar() {
   );
 }
 
-export default Navigationbar;
+export default NavigationBar;
