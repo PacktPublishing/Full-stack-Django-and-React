@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Image } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { getUser } from "../../hooks/user.actions";
 
 function ProfileDetails(props) {
   const { user } = props;
@@ -26,14 +27,16 @@ function ProfileDetails(props) {
           <p className="fs-6">
             <small>{user.posts_count} posts</small>
           </p>
-          <Button
-            variant="primary"
-            size="sm"
-            className="w-25"
-            onClick={() => navigate(`/profile/${user.id}/edit/`)}
-          >
-            Edit
-          </Button>
+          {user.id == getUser().id && (
+            <Button
+              variant="primary"
+              size="sm"
+              className="w-25"
+              onClick={() => navigate(`/profile/${user.id}/edit/`)}
+            >
+              Edit
+            </Button>
+          )}
         </div>
       </div>
     </div>
