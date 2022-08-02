@@ -158,4 +158,4 @@ MEDIA_ROOT = BASE_DIR / 'uploads'
 
 # Default avatar URL
 
-DEFAULT_AVATAR_URL = "https://example.com"
+DEFAULT_AVATAR_URL = "https://avatars.dicebear.com/api/identicon/.svg"
