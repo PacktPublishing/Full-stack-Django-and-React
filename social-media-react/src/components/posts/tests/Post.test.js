@@ -1,13 +1,7 @@
 import { render, screen } from "../../../helpers/test-utils";
 import Post from "../Post";
 import { setUserData } from "../../../hooks/user.actions";
-import { MemoryRouter } from "react-router-dom";
 
-const mockedUsedNavigate = jest.fn();
-jest.mock("react-router-dom", () => ({
-  ...jest.requireActual("react-router-dom"),
-  useNavigate: () => mockedUsedNavigate,
-}));
 
 const post = {
   id: "e6d3e4b53f18453babf369665cbd26d8",
