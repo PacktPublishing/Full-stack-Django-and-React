@@ -4,7 +4,6 @@ import axiosService from "../../helpers/axios";
 
 import { Context } from "../Layout";
 
-
 function UpdateComment(props) {
   const { postId, comment, refresh } = props;
   const [show, setShow] = useState(false);
@@ -12,11 +11,10 @@ function UpdateComment(props) {
   const [form, setForm] = useState({
     author: comment.author.id,
     body: comment.body,
-    post: postId
+    post: postId,
   });
 
   const { toaster, setToaster } = useContext(Context);
-
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -34,7 +32,7 @@ function UpdateComment(props) {
     const data = {
       author: form.author,
       body: form.body,
-      post: postId
+      post: postId,
     };
 
     axiosService

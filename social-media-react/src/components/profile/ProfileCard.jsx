@@ -7,7 +7,7 @@ function ProfileCard(props) {
   const { user } = props;
 
   const handleNavigateToProfile = () => {
-    navigate(`/profile/${user.id}/`)
+    navigate(`/profile/${user.id}/`);
   };
 
   return (
