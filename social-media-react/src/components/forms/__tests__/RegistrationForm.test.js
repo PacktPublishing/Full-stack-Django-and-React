@@ -31,11 +31,6 @@ test("register component", async () => {
   const bioInput = screen.getByTestId("bio-input");
   expect(bioInput).toBeInTheDocument();
 
-  const submitButton = screen.getByTestId("submit-button");
-  expect(submitButton).toBeInTheDocument();
-
-  expect(submitButton.disabled).toBeTruthy();
-
   const password = faker.lorem.slug(2);
   await user.type(usernameInput, userData.username);
   await user.type(firstNameInput, userData.first_name);
@@ -50,6 +45,4 @@ test("register component", async () => {
   expect(lastNameInput.value).toBe(userData.last_name);
   expect(emailAddressInput.value).toBe(userData.email);
   expect(bioInput.value).toBe(userData.bio);
-
-  expect(submitButton.disabled).toBeFalsy();
 });

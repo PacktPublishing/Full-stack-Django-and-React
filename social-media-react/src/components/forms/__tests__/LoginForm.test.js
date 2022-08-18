@@ -19,17 +19,10 @@ test("login component", async () => {
   const passwordInput = screen.getByTestId("password-input");
   expect(passwordInput).toBeInTheDocument();
 
-  const submitButton = screen.getByTestId("submit-button");
-  expect(submitButton).toBeInTheDocument();
-
-  expect(submitButton.disabled).toBeTruthy();
-
   const password = faker.lorem.slug(2);
   await user.type(usernameInput, userData.username);
   await user.type(passwordInput, password);
 
   expect(usernameInput.value).toBe(userData.username);
   expect(passwordInput.value).toBe(password);
-
-  expect(submitButton.disabled).toBeFalsy();
 });

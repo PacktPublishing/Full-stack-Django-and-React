@@ -74,7 +74,6 @@ function LoginForm() {
       <div className="text-content text-danger">{error && <p>{error}</p>}</div>
 
       <Button
-        data-testid="submit-button"
         disabled={!form.password || !form.username}
         variant="primary"
         type="submit"
