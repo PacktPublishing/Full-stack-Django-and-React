@@ -59,18 +59,26 @@ function UpdateComment(props) {
 
   return (
     <>
-      <Dropdown.Item onClick={handleShow}>Modify</Dropdown.Item>
+      <Dropdown.Item data-testid="show-modal-form" onClick={handleShow}>
+        Modify
+      </Dropdown.Item>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton className="border-0">
           <Modal.Title>Update Post</Modal.Title>
         </Modal.Header>
         <Modal.Body className="border-0">
-          <Form noValidate validated={validated} onSubmit={handleSubmit}>
+          <Form
+            data-testid="update-comment-test"
+            noValidate
+            validated={validated}
+            onSubmit={handleSubmit}
+          >
             <Form.Group className="mb-3">
               <Form.Control
                 name="body"
                 value={form.body}
+                data-testid="comment-body-input"
                 onChange={(e) => setForm({ ...form, body: e.target.value })}
                 as="textarea"
                 rows={3}
@@ -79,7 +87,11 @@ function UpdateComment(props) {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleSubmit}>
+          <Button
+            data-testid="update-comment-submit"
+            variant="primary"
+            onClick={handleSubmit}
+          >
             Modify
           </Button>
         </Modal.Footer>
