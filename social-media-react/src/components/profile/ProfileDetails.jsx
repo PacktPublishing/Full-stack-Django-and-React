@@ -13,7 +13,10 @@ function ProfileDetails(props) {
 
   return (
     <div>
-      <div className="d-flex flex-row border-bottom p-5">
+      <div
+        className="d-flex flex-row border-bottom p-5"
+        data-testid="profile-details"
+      >
         <Image
           src={user.avatar}
           roundedCircle
