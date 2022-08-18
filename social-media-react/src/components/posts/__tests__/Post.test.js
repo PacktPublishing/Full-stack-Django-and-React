@@ -9,7 +9,7 @@ const user = userFixtures();
 const post = postFixtures(true, false, user);
 
 beforeEach(() => {
-  // to fully reset the state between tests, clear the storage
+  // to fully reset the state between __tests__, clear the storage
   localStorage.clear();
   // and reset all mocks
   jest.clearAllMocks();
