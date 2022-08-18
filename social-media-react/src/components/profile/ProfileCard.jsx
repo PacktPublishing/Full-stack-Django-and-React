@@ -11,7 +11,7 @@ function ProfileCard(props) {
   };
 
   return (
-    <Card className="border-0 p-2">
+    <Card className="border-0 p-2" data-testid="profile-card">
       <div className="d-flex ">
         <Image
           src={user.avatar}
