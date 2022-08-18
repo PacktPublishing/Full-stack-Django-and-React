@@ -30,4 +30,6 @@ test("login component", async () => {
 
   expect(usernameInput.value).toBe(userData.username);
   expect(passwordInput.value).toBe(password);
+
+  expect(submitButton.disabled).toBeFalsy();
 });
