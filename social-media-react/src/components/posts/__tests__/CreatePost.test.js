@@ -1,26 +1,9 @@
 import { render, screen, fireEvent } from "../../../helpers/test-utils";
 import userEvent from "@testing-library/user-event";
 import CreatePost from "../CreatePost";
-import { setUserData } from "../../../hooks/user.actions";
-import userFixtures from "../../../helpers/fixtures/user";
 import { faker } from "@faker-js/faker";
 
-const user = userFixtures();
-
-beforeEach(() => {
-  // to fully reset the state between __tests__, clear the storage
-  localStorage.clear();
-  // and reset all mocks
-  jest.clearAllMocks();
-
-  setUserData({
-    user: user,
-    access: null,
-    refresh: null,
-  });
-});
-
-test("Create Post form renders", async () => {
+test("Create Post", async () => {
   const user = userEvent.setup();
   render(<CreatePost />);
 
