@@ -1,22 +1,12 @@
 import { render, screen } from "../../../helpers/test-utils";
 import Post from "../Post";
 import { setUserData } from "../../../hooks/user.actions";
+import userFixtures from "../../../helpers/fixtures/user";
+import postFixtures from "../../../helpers/fixtures/post";
 
-const post = {
-  id: "e6d3e4b53f18453babf369665cbd26d8",
-  author: {
-    id: "8380ca50ad0f414188ef69dc9b0707ad",
-    username: "koladev",
-    name: "Michel Mangabo",
-  },
-  body: "This a simple Post.",
-  edited: false,
-  liked: true,
-  likes_count: 1,
-  comments_count: 4,
-  created: "2022-07-07T10:32:56.393467Z",
-  updated: "2022-07-07T10:32:56.393489Z",
-};
+const user = userFixtures();
+
+const post = postFixtures(true, false, user);
 
 beforeEach(() => {
   // to fully reset the state between tests, clear the storage
@@ -25,11 +15,7 @@ beforeEach(() => {
   jest.clearAllMocks();
 
   setUserData({
-    user: {
-      id: "8380ca50ad0f414188ef69dc9b0707ad",
-      username: "koladev",
-      name: "Michel Mangabo",
-    },
+    user: user,
     access: null,
     refresh: null,
   });
