@@ -1,11 +1,14 @@
 import { render, screen, fireEvent } from "../../../helpers/test-utils";
 import userEvent from "@testing-library/user-event";
-import CreatePost from "../CreatePost";
+import UpdatePost from "../UpdatePost";
 import { setUserData } from "../../../hooks/user.actions";
 import userFixtures from "../../../helpers/fixtures/user";
+import postFixtures from "../../../helpers/fixtures/post";
 import { faker } from "@faker-js/faker";
 
 const user = userFixtures();
+
+const post = postFixtures(true, false, user);
 
 beforeEach(() => {
   // to fully reset the state between __tests__, clear the storage
@@ -22,7 +25,7 @@ beforeEach(() => {
 
 test("Create Post form renders", async () => {
   const user = userEvent.setup();
-  render(<CreatePost />);
+  render(<UpdatePost post={post} />);
 
   const showModalForm = screen.getByTestId("show-modal-form");
   expect(showModalForm).toBeInTheDocument();
@@ -31,16 +34,14 @@ test("Create Post form renders", async () => {
 
   fireEvent.click(showModalForm);
 
-  const createFormElement = screen.getByTestId("create-post-test");
+  const createFormElement = screen.getByTestId("show-modal-form");
   expect(createFormElement).toBeInTheDocument();
 
   const postBodyInput = screen.getByTestId("post-body-input");
   expect(postBodyInput).toBeInTheDocument();
 
-  const submitButton = screen.getByTestId("create-post-submit");
+  const submitButton = screen.getByTestId("update-post-submit");
   expect(submitButton).toBeInTheDocument();
-
-  expect(submitButton.disabled).toBeTruthy();
 
   const postBody = faker.lorem.sentence(10);
 
@@ -48,6 +49,6 @@ test("Create Post form renders", async () => {
 
   // Checking if input has the text and button is not disabled
 
-  expect(postBodyInput.value).toBe(postBody);
+  expect(postBodyInput.value).toBe(post.body + postBody);
   expect(submitButton.disabled).toBeFalsy();
 });

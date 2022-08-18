@@ -70,7 +70,12 @@ function CreatePost() {
           <Modal.Title>Create Post</Modal.Title>
         </Modal.Header>
         <Modal.Body className="border-0">
-          <Form noValidate validated={validated} onSubmit={handleSubmit} data-testid="create-post-test">
+          <Form
+            noValidate
+            validated={validated}
+            onSubmit={handleSubmit}
+            data-testid="create-post-test"
+          >
             <Form.Group className="mb-3">
               <Form.Control
                 name="body"
