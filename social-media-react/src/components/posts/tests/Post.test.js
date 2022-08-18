@@ -2,7 +2,6 @@ import { render, screen } from "../../../helpers/test-utils";
 import Post from "../Post";
 import { setUserData } from "../../../hooks/user.actions";
 
-
 const post = {
   id: "e6d3e4b53f18453babf369665cbd26d8",
   author: {
