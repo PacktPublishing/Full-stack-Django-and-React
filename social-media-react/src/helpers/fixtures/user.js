@@ -12,6 +12,8 @@ function userFixtures() {
     bio: faker.lorem.sentence(20),
     username: name,
     avatar: faker.image.avatar(),
+    created: faker.date.recent(),
+    updated: faker.date.recent(),
   };
 }
 
