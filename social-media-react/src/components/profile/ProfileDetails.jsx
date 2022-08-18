@@ -13,7 +13,10 @@ function ProfileDetails(props) {
 
   return (
     <div>
-      <div className="d-flex flex-row border-bottom p-5">
+      <div
+        className="d-flex flex-row border-bottom p-5"
+        data-testid="profile-details"
+      >
         <Image
           src={user.avatar}
           roundedCircle
@@ -27,7 +30,7 @@ function ProfileDetails(props) {
           <p className="fs-6">
             <small>{user.posts_count} posts</small>
           </p>
-          {user.id == getUser().id && (
+          {user.id === getUser().id && (
             <Button
               variant="primary"
               size="sm"

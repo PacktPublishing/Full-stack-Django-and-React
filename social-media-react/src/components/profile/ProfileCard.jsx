@@ -7,11 +7,11 @@ function ProfileCard(props) {
   const { user } = props;
 
   const handleNavigateToProfile = () => {
-    navigate(`/profile/${user.id}/`)
+    navigate(`/profile/${user.id}/`);
   };
 
   return (
-    <Card className="border-0 p-2">
+    <Card className="border-0 p-2" data-testid="profile-card">
       <div className="d-flex ">
         <Image
           src={user.avatar}

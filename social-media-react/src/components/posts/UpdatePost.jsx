@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Button, Modal, Form, Dropdown } from "react-bootstrap";
 import axiosService from "../../helpers/axios";
-import {Context} from "../Layout";
+import { Context } from "../Layout";
 
 function UpdatePost(props) {
   const { post, refresh } = props;
@@ -56,7 +56,9 @@ function UpdatePost(props) {
 
   return (
     <>
-      <Dropdown.Item onClick={handleShow}>Modify</Dropdown.Item>
+      <Dropdown.Item data-testid="show-modal-form" onClick={handleShow}>
+        Modify
+      </Dropdown.Item>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton className="border-0">
@@ -68,6 +70,7 @@ function UpdatePost(props) {
               <Form.Control
                 name="body"
                 value={form.body}
+                data-testid="post-body-input"
                 onChange={(e) => setForm({ ...form, body: e.target.value })}
                 as="textarea"
                 rows={3}
@@ -76,7 +79,11 @@ function UpdatePost(props) {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleSubmit}>
+          <Button
+            data-testid="update-post-submit"
+            variant="primary"
+            onClick={handleSubmit}
+          >
             Modify
           </Button>
         </Modal.Footer>

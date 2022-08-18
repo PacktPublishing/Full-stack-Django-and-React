@@ -46,7 +46,7 @@ function Comment(props) {
   };
 
   return (
-    <Card className="rounded-3 my-2">
+    <Card className="rounded-3 my-2" data-testid="comment-test">
       <Card.Body>
         <Card.Title className="d-flex flex-row justify-content-between">
           <div className="d-flex flex-row">
