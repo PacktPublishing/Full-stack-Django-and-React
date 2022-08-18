@@ -6,13 +6,13 @@ import UpdateComment from "../UpdateComment";
 import userFixtures from "../../../helpers/fixtures/user";
 import commentFixtures from "../../../helpers/fixtures/comment";
 
-const user = userFixtures();
+const userData = userFixtures();
 
-const comment = commentFixtures(true, false, user);
+const commentData = commentFixtures(true, false, userData);
 
 test("Update Comment", async () => {
   const user = userEvent.setup();
-  render(<UpdateComment postId={uuid4()} comment={comment} />);
+  render(<UpdateComment postId={uuid4()} comment={commentData} />);
 
   const showModalForm = screen.getByTestId("show-modal-form");
   expect(showModalForm).toBeInTheDocument();
@@ -38,6 +38,6 @@ test("Update Comment", async () => {
 
   // Checking if input has the text and button is not disabled
 
-  expect(commentBodyInput.value).toBe(comment.body + commentBody);
+  expect(commentBodyInput.value).toBe(commentData.body + commentBody);
   expect(submitButton.disabled).toBeFalsy();
 });

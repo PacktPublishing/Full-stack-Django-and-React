@@ -3,7 +3,7 @@ import userFixtures from "../../../helpers/fixtures/user";
 import ProfileDetails from "../ProfileDetails";
 import { setUserData } from "../../../hooks/user.actions";
 
-const user = userFixtures();
+const userData = userFixtures();
 
 beforeEach(() => {
   // to fully reset the state between __tests__, clear the storage
@@ -12,21 +12,21 @@ beforeEach(() => {
   jest.clearAllMocks();
 
   setUserData({
-    user: user,
+    user: userData,
     access: null,
     refresh: null,
   });
 });
 
 test("Render Profile details component", () => {
-  render(<ProfileDetails user={user} />);
+  render(<ProfileDetails user={userData} />);
 
   const profileDetails = screen.getByTestId("profile-details");
   expect(profileDetails).toBeInTheDocument();
 
-  const nameElement = screen.getByText(user.name);
+  const nameElement = screen.getByText(userData.name);
   expect(nameElement).toBeInTheDocument();
 
-  const bioElement = screen.getByText(user.bio);
+  const bioElement = screen.getByText(userData.bio);
   expect(bioElement).toBeInTheDocument();
 });

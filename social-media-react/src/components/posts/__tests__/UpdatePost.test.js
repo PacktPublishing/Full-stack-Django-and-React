@@ -5,13 +5,13 @@ import userFixtures from "../../../helpers/fixtures/user";
 import postFixtures from "../../../helpers/fixtures/post";
 import { faker } from "@faker-js/faker";
 
-const user = userFixtures();
+const userData = userFixtures();
 
-const post = postFixtures(true, false, user);
+const postData = postFixtures(true, false, userData);
 
 test("Create Post form renders", async () => {
   const user = userEvent.setup();
-  render(<UpdatePost post={post} />);
+  render(<UpdatePost post={postData} />);
 
   const showModalForm = screen.getByTestId("show-modal-form");
   expect(showModalForm).toBeInTheDocument();
@@ -35,6 +35,6 @@ test("Create Post form renders", async () => {
 
   // Checking if input has the text and button is not disabled
 
-  expect(postBodyInput.value).toBe(post.body + postBody);
+  expect(postBodyInput.value).toBe(postData.body + postBody);
   expect(submitButton.disabled).toBeFalsy();
 });

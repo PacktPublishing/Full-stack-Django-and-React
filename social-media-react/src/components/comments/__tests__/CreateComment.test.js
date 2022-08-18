@@ -6,7 +6,7 @@ import userFixtures from "../../../helpers/fixtures/user";
 import { faker } from "@faker-js/faker";
 import CreateComment from "../CreateComment";
 
-const user = userFixtures();
+const userData = userFixtures();
 
 beforeEach(() => {
   // to fully reset the state between __tests__, clear the storage
@@ -15,7 +15,7 @@ beforeEach(() => {
   jest.clearAllMocks();
 
   setUserData({
-    user: user,
+    user: userData,
     access: null,
     refresh: null,
   });

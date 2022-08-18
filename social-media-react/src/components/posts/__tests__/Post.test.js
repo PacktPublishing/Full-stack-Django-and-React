@@ -4,9 +4,9 @@ import { setUserData } from "../../../hooks/user.actions";
 import userFixtures from "../../../helpers/fixtures/user";
 import postFixtures from "../../../helpers/fixtures/post";
 
-const user = userFixtures();
+const userData = userFixtures();
 
-const post = postFixtures(true, false, user);
+const postData = postFixtures(true, false, userData);
 
 beforeEach(() => {
   // to fully reset the state between __tests__, clear the storage
@@ -15,14 +15,14 @@ beforeEach(() => {
   jest.clearAllMocks();
 
   setUserData({
-    user: user,
+    user: userData,
     access: null,
     refresh: null,
   });
 });
 
 test("render Post component", () => {
-  render(<Post post={post} />);
+  render(<Post post={postData} />);
 
   const postElement = screen.getByTestId("post-test");
 

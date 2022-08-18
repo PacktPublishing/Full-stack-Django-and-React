@@ -4,9 +4,9 @@ import { setUserData } from "../../../hooks/user.actions";
 import userFixtures from "../../../helpers/fixtures/user";
 import commentFixtures from "../../../helpers/fixtures/comment";
 
-const user = userFixtures();
+const userData = userFixtures();
 
-const comment = commentFixtures(true, false, user);
+const commentData = commentFixtures(true, false, userData);
 
 beforeEach(() => {
   // to fully reset the state between __tests__, clear the storage
@@ -15,14 +15,14 @@ beforeEach(() => {
   jest.clearAllMocks();
 
   setUserData({
-    user: user,
+    user: userData,
     access: null,
     refresh: null,
   });
 });
 
 test("testing Comment component", () => {
-  render(<Comment comment={comment} />);
+  render(<Comment comment={commentData} />);
 
   const commentElement = screen.getByTestId("comment-test");
 
