@@ -5,7 +5,10 @@ import { useUserActions } from "../../hooks/user.actions";
 
 function LoginForm() {
   const [validated, setValidated] = useState(false);
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState({
+    username: "",
+    password: "",
+  });
   const [error, setError] = useState(null);
   const userActions = useUserActions();
 
