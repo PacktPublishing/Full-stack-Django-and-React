@@ -40,9 +40,9 @@ function UpdateProfileForm(props) {
     // Checking for null values in the form and removing it.
 
     Object.keys(data).forEach((key) => {
-        if (data[key]) {
-          formData.append(key, data[key]);
-        }
+      if (data[key]) {
+        formData.append(key, data[key]);
+      }
     });
 
     if (avatar) {

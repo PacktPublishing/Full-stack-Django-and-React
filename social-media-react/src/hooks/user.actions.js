@@ -10,7 +10,7 @@ function useUserActions() {
     login,
     register,
     logout,
-    edit
+    edit,
   };
 
   // Login the user
@@ -33,17 +33,19 @@ function useUserActions() {
 
   // Edit the user
   function edit(data, userId) {
-    return axiosService.patch(`${baseURL}/user/${userId}/`, data).then((res) => {
-      // Registering the account in the store
-      localStorage.setItem(
-        "auth",
-        JSON.stringify({
-          access: getAccessToken(),
-          refresh: getRefreshToken(),
-          user: res.data,
-        })
-      );
-    });
+    return axiosService
+      .patch(`${baseURL}/user/${userId}/`, data)
+      .then((res) => {
+        // Registering the account in the store
+        localStorage.setItem(
+          "auth",
+          JSON.stringify({
+            access: getAccessToken(),
+            refresh: getRefreshToken(),
+            user: res.data,
+          })
+        );
+      });
   }
 
   // Logout the user
