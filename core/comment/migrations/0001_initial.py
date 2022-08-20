@@ -25,8 +25,8 @@ class Migration(migrations.Migration):
                 ('updated', models.DateTimeField(auto_now=True)),
                 ('body', models.TextField()),
                 ('edited', models.BooleanField(default=False)),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to=settings.AUTH_USER_MODEL)),
-                ('post', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='core_post.post')),
+                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('post', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='core_post.post')),
             ],
             options={
                 'db_table': "'core.comment'",
