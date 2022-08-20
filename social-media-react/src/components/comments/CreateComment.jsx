@@ -8,7 +8,11 @@ import { Context } from "../Layout";
 function CreateComment(props) {
   const { postId, refresh } = props;
   const [validated, setValidated] = useState(false);
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState({
+    author: "",
+    body: "",
+    post: "",
+  });
 
   const { toaster, setToaster } = useContext(Context);
 
@@ -83,7 +87,7 @@ function CreateComment(props) {
           variant="primary"
           data-testid="create-comment-submit"
           onClick={handleSubmit}
-          disabled={form.body === undefined}
+          disabled={!form.body}
           size="small"
         >
           Comment

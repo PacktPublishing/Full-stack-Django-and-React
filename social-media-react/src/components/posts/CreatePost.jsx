@@ -7,7 +7,10 @@ import { Context } from "../Layout";
 function CreatePost() {
   const [show, setShow] = useState(false);
   const [validated, setValidated] = useState(false);
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState({
+    author: "",
+    body: "",
+  });
 
   const { toaster, setToaster } = useContext(Context);
 
@@ -92,7 +95,7 @@ function CreatePost() {
           <Button
             variant="primary"
             onClick={handleSubmit}
-            disabled={form.body === undefined}
+            disabled={!form.body}
             data-testid="create-post-submit"
           >
             Post
