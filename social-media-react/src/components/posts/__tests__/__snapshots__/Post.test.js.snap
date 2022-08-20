@@ -26,52 +26,22 @@ exports[`Post component snapshot Matches DOM snapshot 1`] = `
           <p
             className="fs-6 m-0"
           >
-            Mauricio Donnelly
+            Mossie Murphy
           </p>
           <p
             className="fs-6 fw-lighter"
           >
             <small>
-              23 hours ago
+              15 hours ago
             </small>
           </p>
-        </div>
-      </div>
-      <div>
-        <div
-          className="dropdown"
-        >
-          <a
-            href="#"
-            onClick={[Function]}
-          >
-            <span
-              aria-label="more"
-              className="anticon anticon-more"
-              role="img"
-            >
-              <svg
-                aria-hidden="true"
-                data-icon="more"
-                fill="currentColor"
-                focusable="false"
-                height="1em"
-                viewBox="64 64 896 896"
-                width="1em"
-              >
-                <path
-                  d="M456 231a56 56 0 10112 0 56 56 0 10-112 0zm0 280a56 56 0 10112 0 56 56 0 10-112 0zm0 280a56 56 0 10112 0 56 56 0 10-112 0z"
-                />
-              </svg>
-            </span>
-          </a>
         </div>
       </div>
     </div>
     <p
       className="card-text"
     >
-      Quibusdam provident neque dolorum voluptate exercitationem assumenda incidunt omnis nam eaque possimus optio magnam quo ipsum pariatur impedit qui sunt.
+      Qui corrupti ut sint provident id et recusandae placeat ad at asperiores odit occaecati praesentium minus id cumque quia molestiae.
     </p>
     <div
       className="d-flex flex-row justify-content-between"
@@ -114,7 +84,7 @@ exports[`Post component snapshot Matches DOM snapshot 1`] = `
           className="ms-1 fs-6"
         >
           <small>
-            8
+            2
              like
           </small>
         </p>
@@ -124,10 +94,10 @@ exports[`Post component snapshot Matches DOM snapshot 1`] = `
       >
         <small>
           <a
-            href="/post/46b462a9-9d0b-4026-bd90-d4eb859aafd6/"
+            href="/post/ee2a9a31-c4b7-4884-984a-3d55043f8ba2/"
             onClick={[Function]}
           >
-            6
+            2
              comments
           </a>
         </small>
