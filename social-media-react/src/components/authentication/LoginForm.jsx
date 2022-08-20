@@ -5,7 +5,10 @@ import { useUserActions } from "../../hooks/user.actions";
 
 function LoginForm() {
   const [validated, setValidated] = useState(false);
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState({
+    username: "",
+    password: "",
+  });
   const [error, setError] = useState(null);
   const userActions = useUserActions();
 
@@ -24,12 +27,11 @@ function LoginForm() {
       password: form.password,
     };
 
-    userActions.login(data)
-      .catch((err) => {
-        if (err.message) {
-          setError(err.request.response);
-        }
-      });
+    userActions.login(data).catch((err) => {
+      if (err.message) {
+        setError(err.request.response);
+      }
+    });
   };
 
   return (

@@ -5,7 +5,14 @@ import { useUserActions } from "../../hooks/user.actions";
 
 function RegistrationForm() {
   const [validated, setValidated] = useState(false);
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState({
+    username: "",
+    email: "",
+    password: "",
+    first_name: "",
+    last_name: "",
+    bio: "",
+  });
   const [error, setError] = useState(null);
   const userActions = useUserActions();
 
@@ -28,12 +35,11 @@ function RegistrationForm() {
       bio: form.bio,
     };
 
-    userActions.register(data)
-      .catch((err) => {
-        if (err.message) {
-          setError(err.request.response);
-        }
-      });
+    userActions.register(data).catch((err) => {
+      if (err.message) {
+        setError(err.request.response);
+      }
+    });
   };
 
   return (
