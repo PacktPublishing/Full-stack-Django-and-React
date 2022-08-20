@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile Card snapshop 1`] = `
+<div
+  className="border-0 p-2 card"
+  data-testid="profile-card"
+>
+  <div
+    className="d-flex "
+  >
+    <img
+      className="my-3 border border-primary border-2 rounded-circle"
+      height={48}
+      src={null}
+      width={48}
+    />
+    <div
+      className="card-body"
+    >
+      <div
+        className="fs-6 card-title h5"
+      >
+        Mossie Murphy
+      </div>
+      <button
+        className="btn btn-primary"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        See profile
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Profile Card snapshot 1`] = `
+<div
+  className="border-0 p-2 card"
+  data-testid="profile-card"
+>
+  <div
+    className="d-flex "
+  >
+    <img
+      className="my-3 border border-primary border-2 rounded-circle"
+      height={48}
+      src={null}
+      width={48}
+    />
+    <div
+      className="card-body"
+    >
+      <div
+        className="fs-6 card-title h5"
+      >
+        Mossie Murphy
+      </div>
+      <button
+        className="btn btn-primary"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        See profile
+      </button>
+    </div>
+  </div>
+</div>
+`;
