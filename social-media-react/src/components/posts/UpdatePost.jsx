@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Button, Modal, Form, Dropdown } from "react-bootstrap";
 import axiosService from "../../helpers/axios";
-import {Context} from "../Layout";
+import { Context } from "../Layout";
 
 function UpdatePost(props) {
   const { post, refresh } = props;
