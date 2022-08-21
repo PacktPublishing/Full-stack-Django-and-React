@@ -6,7 +6,7 @@ import userFixtures from "../../../helpers/fixtures/user";
 
 const userData = userFixtures();
 
-test("register component", async () => {
+test("Renders Registration form", async () => {
   const user = userEvent.setup();
   render(<RegistrationForm />);
 
