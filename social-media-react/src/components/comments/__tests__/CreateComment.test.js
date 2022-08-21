@@ -28,8 +28,8 @@ test("Create Comment", async () => {
   const createFormElement = screen.getByTestId("create-comment-test");
   expect(createFormElement).toBeInTheDocument();
 
-  const commentBodyInput = screen.getByTestId("comment-body-input");
-  expect(commentBodyInput).toBeInTheDocument();
+  const commentBodyField = screen.getByTestId("comment-body-field");
+  expect(commentBodyField).toBeInTheDocument();
 
   const submitButton = screen.getByTestId("create-comment-submit");
   expect(submitButton).toBeInTheDocument();
@@ -38,10 +38,10 @@ test("Create Comment", async () => {
 
   const commentBody = faker.lorem.sentence(10);
 
-  await user.type(commentBodyInput, commentBody);
+  await user.type(commentBodyField, commentBody);
 
-  // Checking if input has the text and button is not disabled
+  // Checking if field has the text and button is not disabled
 
-  expect(commentBodyInput.value).toBe(commentBody);
+  expect(commentBodyField.value).toBe(commentBody);
   expect(submitButton.disabled).toBeFalsy();
 });

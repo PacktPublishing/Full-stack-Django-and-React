@@ -47,7 +47,7 @@ function LoginForm() {
         <Form.Label>Username</Form.Label>
         <Form.Control
           value={form.username}
-          data-testid="username-input"
+          data-testid="username-field"
           onChange={(e) => setForm({ ...form, username: e.target.value })}
           required
           type="text"
@@ -62,7 +62,7 @@ function LoginForm() {
         <Form.Label>Password</Form.Label>
         <Form.Control
           value={form.password}
-          data-testid="password-input"
+          data-testid="password-field"
           minLength="8"
           onChange={(e) => setForm({ ...form, password: e.target.value })}
           required

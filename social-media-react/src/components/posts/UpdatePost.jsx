@@ -65,12 +65,17 @@ function UpdatePost(props) {
           <Modal.Title>Update Post</Modal.Title>
         </Modal.Header>
         <Modal.Body className="border-0">
-          <Form noValidate validated={validated} onSubmit={handleSubmit}>
+          <Form
+            noValidate
+            validated={validated}
+            onSubmit={handleSubmit}
+            data-testid="update-post-form"
+          >
             <Form.Group className="mb-3">
               <Form.Control
                 name="body"
                 value={form.body}
-                data-testid="post-body-input"
+                data-testid="post-body-field"
                 onChange={(e) => setForm({ ...form, body: e.target.value })}
                 as="textarea"
                 rows={3}

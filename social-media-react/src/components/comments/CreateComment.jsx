@@ -75,7 +75,7 @@ function CreateComment(props) {
         <Form.Control
           className="py-2 rounded-pill border-primary"
           type="text"
-          data-testid="comment-body-input"
+          data-testid="comment-body-field"
           placeholder="Write a comment"
           value={form.body}
           name="body"

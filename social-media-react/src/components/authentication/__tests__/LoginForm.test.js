@@ -6,23 +6,23 @@ import userFixtures from "../../../helpers/fixtures/user";
 
 const userData = userFixtures();
 
-test("login component", async () => {
+test("renders Login form", async () => {
   const user = userEvent.setup();
   render(<LoginForm />);
 
   const loginForm = screen.getByTestId("login-form");
   expect(loginForm).toBeInTheDocument();
 
-  const usernameInput = screen.getByTestId("username-input");
-  expect(usernameInput).toBeInTheDocument();
+  const usernameField = screen.getByTestId("username-field");
+  expect(usernameField).toBeInTheDocument();
 
-  const passwordInput = screen.getByTestId("password-input");
-  expect(passwordInput).toBeInTheDocument();
+  const passwordField = screen.getByTestId("password-field");
+  expect(passwordField).toBeInTheDocument();
 
   const password = faker.lorem.slug(2);
-  await user.type(usernameInput, userData.username);
-  await user.type(passwordInput, password);
+  await user.type(usernameField, userData.username);
+  await user.type(passwordField, password);
 
-  expect(usernameInput.value).toBe(userData.username);
-  expect(passwordInput.value).toBe(password);
+  expect(usernameField.value).toBe(userData.username);
+  expect(passwordField.value).toBe(password);
 });

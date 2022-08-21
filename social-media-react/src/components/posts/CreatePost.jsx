@@ -77,12 +77,12 @@ function CreatePost() {
             noValidate
             validated={validated}
             onSubmit={handleSubmit}
-            data-testid="create-post-test"
+            data-testid="create-post-form"
           >
             <Form.Group className="mb-3">
               <Form.Control
                 name="body"
-                data-testid="post-body-input"
+                data-testid="post-body-field"
                 value={form.body}
                 onChange={(e) => setForm({ ...form, body: e.target.value })}
                 as="textarea"
