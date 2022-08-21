@@ -23,18 +23,18 @@ test("Create Post form renders", async () => {
   const createFormElement = screen.getByTestId("show-modal-form");
   expect(createFormElement).toBeInTheDocument();
 
-  const postBodyInput = screen.getByTestId("post-body-input");
-  expect(postBodyInput).toBeInTheDocument();
+  const postBodyField = screen.getByTestId("post-body-field");
+  expect(postBodyField).toBeInTheDocument();
 
   const submitButton = screen.getByTestId("update-post-submit");
   expect(submitButton).toBeInTheDocument();
 
   const postBody = faker.lorem.sentence(10);
 
-  await user.type(postBodyInput, postBody);
+  await user.type(postBodyField, postBody);
 
-  // Checking if input has the text and button is not disabled
+  // Checking if field has the text and button is not disabled
 
-  expect(postBodyInput.value).toBe(postData.body + postBody);
+  expect(postBodyField.value).toBe(postData.body + postBody);
   expect(submitButton.disabled).toBeFalsy();
 });

@@ -70,7 +70,7 @@ function UpdatePost(props) {
               <Form.Control
                 name="body"
                 value={form.body}
-                data-testid="post-body-input"
+                data-testid="post-body-field"
                 onChange={(e) => setForm({ ...form, body: e.target.value })}
                 as="textarea"
                 rows={3}

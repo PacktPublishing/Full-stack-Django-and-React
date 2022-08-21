@@ -13,36 +13,36 @@ test("register component", async () => {
   const registerForm = screen.getByTestId("register-form");
   expect(registerForm).toBeInTheDocument();
 
-  const firstNameInput = screen.getByTestId("first-name-input");
-  expect(firstNameInput).toBeInTheDocument();
+  const firstNameField = screen.getByTestId("first-name-field");
+  expect(firstNameField).toBeInTheDocument();
 
-  const lastNameInput = screen.getByTestId("last-name-input");
-  expect(lastNameInput).toBeInTheDocument();
+  const lastNameField = screen.getByTestId("last-name-field");
+  expect(lastNameField).toBeInTheDocument();
 
-  const emailAddressInput = screen.getByTestId("email-input");
-  expect(emailAddressInput).toBeInTheDocument();
+  const emailAddressField = screen.getByTestId("email-field");
+  expect(emailAddressField).toBeInTheDocument();
 
-  const usernameInput = screen.getByTestId("username-input");
-  expect(usernameInput).toBeInTheDocument();
+  const usernameField = screen.getByTestId("username-field");
+  expect(usernameField).toBeInTheDocument();
 
-  const passwordInput = screen.getByTestId("password-input");
-  expect(passwordInput).toBeInTheDocument();
+  const passwordField = screen.getByTestId("password-field");
+  expect(passwordField).toBeInTheDocument();
 
-  const bioInput = screen.getByTestId("bio-input");
-  expect(bioInput).toBeInTheDocument();
+  const bioField = screen.getByTestId("bio-field");
+  expect(bioField).toBeInTheDocument();
 
   const password = faker.lorem.slug(2);
-  await user.type(usernameInput, userData.username);
-  await user.type(firstNameInput, userData.first_name);
-  await user.type(lastNameInput, userData.last_name);
-  await user.type(emailAddressInput, userData.email);
-  await user.type(bioInput, userData.bio);
-  await user.type(passwordInput, password);
+  await user.type(usernameField, userData.username);
+  await user.type(firstNameField, userData.first_name);
+  await user.type(lastNameField, userData.last_name);
+  await user.type(emailAddressField, userData.email);
+  await user.type(bioField, userData.bio);
+  await user.type(passwordField, password);
 
-  expect(usernameInput.value).toBe(userData.username);
-  expect(passwordInput.value).toBe(password);
-  expect(firstNameInput.value).toBe(userData.first_name);
-  expect(lastNameInput.value).toBe(userData.last_name);
-  expect(emailAddressInput.value).toBe(userData.email);
-  expect(bioInput.value).toBe(userData.bio);
+  expect(usernameField.value).toBe(userData.username);
+  expect(passwordField.value).toBe(password);
+  expect(firstNameField.value).toBe(userData.first_name);
+  expect(lastNameField.value).toBe(userData.last_name);
+  expect(emailAddressField.value).toBe(userData.email);
+  expect(bioField.value).toBe(userData.bio);
 });

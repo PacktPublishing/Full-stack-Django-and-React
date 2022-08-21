@@ -17,8 +17,8 @@ test("Create Post", async () => {
   const createFormElement = screen.getByTestId("create-post-test");
   expect(createFormElement).toBeInTheDocument();
 
-  const postBodyInput = screen.getByTestId("post-body-input");
-  expect(postBodyInput).toBeInTheDocument();
+  const postBodyField = screen.getByTestId("post-body-field");
+  expect(postBodyField).toBeInTheDocument();
 
   const submitButton = screen.getByTestId("create-post-submit");
   expect(submitButton).toBeInTheDocument();
@@ -27,10 +27,10 @@ test("Create Post", async () => {
 
   const postBody = faker.lorem.sentence(10);
 
-  await user.type(postBodyInput, postBody);
+  await user.type(postBodyField, postBody);
 
-  // Checking if input has the text and button is not disabled
+  // Checking if field has the text and button is not disabled
 
-  expect(postBodyInput.value).toBe(postBody);
+  expect(postBodyField.value).toBe(postBody);
   expect(submitButton.disabled).toBeFalsy();
 });

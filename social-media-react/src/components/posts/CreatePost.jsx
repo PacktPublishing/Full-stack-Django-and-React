@@ -82,7 +82,7 @@ function CreatePost() {
             <Form.Group className="mb-3">
               <Form.Control
                 name="body"
-                data-testid="post-body-input"
+                data-testid="post-body-field"
                 value={form.body}
                 onChange={(e) => setForm({ ...form, body: e.target.value })}
                 as="textarea"

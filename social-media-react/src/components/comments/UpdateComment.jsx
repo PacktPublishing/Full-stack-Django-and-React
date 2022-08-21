@@ -78,7 +78,7 @@ function UpdateComment(props) {
               <Form.Control
                 name="body"
                 value={form.body}
-                data-testid="comment-body-input"
+                data-testid="comment-body-field"
                 onChange={(e) => setForm({ ...form, body: e.target.value })}
                 as="textarea"
                 rows={3}
