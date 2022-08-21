@@ -77,7 +77,7 @@ function CreatePost() {
             noValidate
             validated={validated}
             onSubmit={handleSubmit}
-            data-testid="create-post-test"
+            data-testid="create-post-form"
           >
             <Form.Group className="mb-3">
               <Form.Control

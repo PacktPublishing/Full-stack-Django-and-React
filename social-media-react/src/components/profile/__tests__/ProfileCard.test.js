@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "../../../helpers/test-utils";
+import { render, screen } from "../../../helpers/test-utils";
 import TestRenderer from "react-test-renderer";
 import ProfileCard from "../ProfileCard";
 import { BrowserRouter } from "react-router-dom";

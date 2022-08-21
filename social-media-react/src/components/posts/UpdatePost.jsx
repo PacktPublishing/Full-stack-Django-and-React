@@ -65,7 +65,12 @@ function UpdatePost(props) {
           <Modal.Title>Update Post</Modal.Title>
         </Modal.Header>
         <Modal.Body className="border-0">
-          <Form noValidate validated={validated} onSubmit={handleSubmit}>
+          <Form
+            noValidate
+            validated={validated}
+            onSubmit={handleSubmit}
+            data-testid="update-post-form"
+          >
             <Form.Group className="mb-3">
               <Form.Control
                 name="body"

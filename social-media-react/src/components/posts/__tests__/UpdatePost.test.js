@@ -9,7 +9,7 @@ const userData = userFixtures();
 
 const postData = postFixtures(true, false, userData);
 
-test("Create Post form renders", async () => {
+test("Render UpdatePost component", async () => {
   const user = userEvent.setup();
   render(<UpdatePost post={postData} />);
 
@@ -20,8 +20,8 @@ test("Create Post form renders", async () => {
 
   fireEvent.click(showModalForm);
 
-  const createFormElement = screen.getByTestId("show-modal-form");
-  expect(createFormElement).toBeInTheDocument();
+  const updateFormElement = screen.getByTestId("update-post-form");
+  expect(updateFormElement).toBeInTheDocument();
 
   const postBodyField = screen.getByTestId("post-body-field");
   expect(postBodyField).toBeInTheDocument();

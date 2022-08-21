@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import CreatePost from "../CreatePost";
 import { faker } from "@faker-js/faker";
 
-test("Create Post", async () => {
+test("Renders CreatePost component", async () => {
   const user = userEvent.setup();
   render(<CreatePost />);
 
@@ -14,7 +14,7 @@ test("Create Post", async () => {
 
   fireEvent.click(showModalForm);
 
-  const createFormElement = screen.getByTestId("create-post-test");
+  const createFormElement = screen.getByTestId("create-post-form");
   expect(createFormElement).toBeInTheDocument();
 
   const postBodyField = screen.getByTestId("post-body-field");
