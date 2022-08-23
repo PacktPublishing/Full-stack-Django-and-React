@@ -1,0 +1,37 @@
+version: '3.7'
+services:
+  nginx:
+    container_name: web_server
+    restart: on-failure
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - uploads_volume:/app/uploads
+    ports:
+      - "80:80"
+    depends_on:
+      - api
+
+  api:
+    container_name: api_app
+    build: .
+    restart: always
+    env_file: .env
+    ports:
+      - "5005:5005"
+    command: >
+      sh -c "python manage.py migrate --no-input && gunicorn CoreRoot.wsgi:application --bind 0.0.0.0:5005"
+    volumes:
+     - .:/app
+     - uploads_volume:/app/uploads
+    depends_on:
+     - db
+  db:
+    container_name: api_db
+    image: postgres:14.3-alpine
+    env_file: .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+volumes:
+  uploads_volume:
+  postgres_data:
