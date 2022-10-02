@@ -1,4 +1,8 @@
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.contrib.auth.models import (
+    AbstractBaseUser,
+    BaseUserManager,
+    PermissionsMixin,
+)
 from django.db import models
 
 from core.abstract.models import AbstractModel, AbstractManager
@@ -6,21 +10,22 @@ from core.abstract.models import AbstractModel, AbstractManager
 
 def user_directory_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
-    return 'user_{0}/{1}'.format(instance.public_id, filename)
+    return "user_{0}/{1}".format(instance.public_id, filename)
 
 
 class UserManager(BaseUserManager, AbstractManager):
-
     def create_user(self, username, email, password=None, **kwargs):
         """Create and return a `User` with an email, phone number, username and password."""
         if username is None:
-            raise TypeError('Users must have a username.')
+            raise TypeError("Users must have a username.")
         if email is None:
-            raise TypeError('Users must have an email.')
+            raise TypeError("Users must have an email.")
         if password is None:
-            raise TypeError('User must have an email.')
+            raise TypeError("User must have an email.")
 
-        user = self.model(username=username, email=self.normalize_email(email), **kwargs)
+        user = self.model(
+            username=username, email=self.normalize_email(email), **kwargs
+        )
         user.set_password(password)
         user.save(using=self._db)
 
@@ -31,11 +36,11 @@ class UserManager(BaseUserManager, AbstractManager):
         Create and return a `User` with superuser (admin) permissions.
         """
         if password is None:
-            raise TypeError('Superusers must have a password.')
+            raise TypeError("Superusers must have a password.")
         if email is None:
-            raise TypeError('Superusers must have an email.')
+            raise TypeError("Superusers must have an email.")
         if username is None:
-            raise TypeError('Superusers must have an username.')
+            raise TypeError("Superusers must have an username.")
 
         user = self.create_user(username, email, password, **kwargs)
         user.is_superuser = True
@@ -55,20 +60,15 @@ class User(AbstractModel, AbstractBaseUser, PermissionsMixin):
     is_superuser = models.BooleanField(default=False)
 
     bio = models.TextField(null=True)
-    avatar = models.ImageField(
-        null=True, blank=True, upload_to=user_directory_path)
+    avatar = models.ImageField(null=True, blank=True, upload_to=user_directory_path)
 
-    posts_liked = models.ManyToManyField(
-        "core_post.Post",
-        related_name="liked_by"
-    )
+    posts_liked = models.ManyToManyField("core_post.Post", related_name="liked_by")
     comments_liked = models.ManyToManyField(
-        "core_comment.Comment",
-        related_name="commented_by"
+        "core_comment.Comment", related_name="commented_by"
     )
 
-    USERNAME_FIELD = 'username'
-    EMAIL_FIELD = 'email'
+    USERNAME_FIELD = "username"
+    EMAIL_FIELD = "email"
 
     objects = UserManager()
 
