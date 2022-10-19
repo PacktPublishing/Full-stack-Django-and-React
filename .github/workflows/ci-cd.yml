@@ -43,6 +43,7 @@ jobs:
 
   deploy:
     name: Deploying
+    if: ${{ github.event_name == 'push' }}
     needs: [build-test]
     runs-on: ubuntu-latest
     steps:
