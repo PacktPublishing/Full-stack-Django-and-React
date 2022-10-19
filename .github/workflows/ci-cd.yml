@@ -35,7 +35,7 @@ jobs:
               POSTGRES_DB=coredb
               ENV=TESTING
               DJANGO_ALLOWED_HOSTS=127.0.0.1,localhost
-               " >> .env.dev
+               " >> .env
     - name: Building containers
       run: docker-compose up -d --build
     - name: Running Tests
