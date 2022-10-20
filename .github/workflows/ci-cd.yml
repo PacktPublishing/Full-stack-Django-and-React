@@ -9,17 +9,6 @@ on:
 jobs:
   build-test:
     runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:12
-        env:
-          POSTGRES_USER: core
-          POSTGRES_PASSWORD: wCh29&HE&T83
-          POSTGRES_DB: coredb
-          ACTIONS_ALLOW_UNSECURE_COMMANDS: true
-        ports:
-          - 5432:5432
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
     - uses: actions/checkout@v2
     - name: Injecting env vars
@@ -37,9 +26,11 @@ jobs:
               DJANGO_ALLOWED_HOSTS=127.0.0.1,localhost
                " >> .env
     - name: Building containers
-      run: docker-compose up -d --build
+      run: |
+        docker-compose up -d --build
     - name: Running Tests
-      run: docker-compose exec -T api pytest
+      run: |
+        docker-compose exec -T api pytest
 
   deploy:
     name: Deploying
