@@ -1,0 +1,50 @@
+name: Build, Test and Deploy Postagram
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Injecting env vars
+      run: |
+        echo "SECRET_KEY=foo
+              DATABASE_NAME=coredb
+              DATABASE_USER=core
+              DATABASE_PASSWORD=wCh29&HE&T83
+              DATABASE_HOST=postagram_db
+              DATABASE_PORT=5432
+              POSTGRES_USER=core
+              POSTGRES_PASSWORD=wCh29&HE&T83
+              POSTGRES_DB=coredb
+              ENV=TESTING
+              DJANGO_ALLOWED_HOSTS=127.0.0.1,localhost
+               " >> .env
+    - name: Building containers
+      run: |
+        docker-compose up -d --build
+    - name: Running Tests
+      run: |
+        docker-compose exec -T api pytest
+
+  deploy:
+    name: Deploying
+    if: ${{ github.event_name == 'push' }}
+    needs: [build-test]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploying Application
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_AWS_SERVER_IP }}
+        username: ${{ secrets.SSH_SERVER_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        passphrase: ${{ secrets.SSH_PASSPHRASE }}
+        script: |
+          cd ~/.scripts
+          ./docker-deploy.sh
