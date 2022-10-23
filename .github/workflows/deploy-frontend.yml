@@ -2,30 +2,32 @@ name: Build and deploy frontend
 
 on:
   push:
-    branches:
-      - main
-jobs:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
-  build:
+jobs:
+  test:
+    name: Tests
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: ./social-media-react
     steps:
-      - name: Checking out code
-        uses: actions/checkout@v3
-      - name: Installing Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "16"
+      - uses: actions/checkout@v2
+
       - name: Injecting environment variables
         run: echo "REACT_APP_API_URL=${{ secrets.API_URL }}" >> .env
+
       - name: Installing dependencies
         run: yarn install
-      - name: Testing
+
+      - name: Running tests
         run: yarn test
+
       - name: Building project
         run: yarn build
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
