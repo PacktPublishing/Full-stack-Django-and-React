@@ -54,6 +54,5 @@
   },
   "jest": {
     "resetMocks": false
-  },
-  "type": "module"
+  }
 }
