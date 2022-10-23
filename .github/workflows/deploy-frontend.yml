@@ -22,6 +22,8 @@ jobs:
         run: echo "REACT_APP_API_URL=${{ secrets.API_URL }}" >> .env
       - name: Installing dependencies
         run: yarn install
+      - name: Testing
+        run: yarn test
       - name: Building project
         run: yarn build
       - name: Configure AWS Credentials

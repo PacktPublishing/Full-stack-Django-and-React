@@ -3,7 +3,7 @@ import { MoreOutlined } from "@ant-design/icons";
 
 const MoreToggleIcon = React.forwardRef(({ onClick }, ref) => (
   <a
-    href="#"
+    href="@"
     ref={ref}
     onClick={(e) => {
       e.preventDefault();

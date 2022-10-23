@@ -1,34 +1,17 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { format } from "timeago.js";
-import {
-  LikeFilled,
-  CommentOutlined,
-  LikeOutlined,
-  MoreOutlined,
-} from "@ant-design/icons";
+import { LikeFilled, CommentOutlined, LikeOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { Image, Card, Dropdown } from "react-bootstrap";
 import axiosService from "../../helpers/axios";
 import { getUser } from "../../hooks/user.actions";
 import UpdatePost from "./UpdatePost";
 import { Context } from "../Layout";
-
-const MoreToggleIcon = React.forwardRef(({ onClick }, ref) => (
-  <a
-    href="#"
-    ref={ref}
-    onClick={(e) => {
-      e.preventDefault();
-      onClick(e);
-    }}
-  >
-    <MoreOutlined />
-  </a>
-));
+import MoreToggleIcon from "../MoreToggleIcon";
 
 function Post(props) {
   const { post, refresh, isSinglePost } = props;
-  const { toaster, setToaster } = useContext(Context);
+  const { setToaster } = useContext(Context);
 
   const user = getUser();
 
@@ -53,7 +36,7 @@ function Post(props) {
         });
         refresh();
       })
-      .catch((err) => {
+      .catch(() => {
         setToaster({
           type: "danger",
           message: "An error occurred.",
@@ -86,7 +69,7 @@ function Post(props) {
             {user.name === post.author.name && (
               <div>
                 <Dropdown>
-                  <Dropdown.Toggle as={MoreToggleIcon}></Dropdown.Toggle>
+                  <Dropdown.Toggle as={MoreToggleIcon} />
                   <Dropdown.Menu>
                     <UpdatePost post={post} refresh={refresh} />
                     <Dropdown.Item
