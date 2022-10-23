@@ -12,7 +12,7 @@ function CreatePost() {
     body: "",
   });
 
-  const { toaster, setToaster } = useContext(Context);
+  const { setToaster } = useContext(Context);
 
   const user = getUser();
 
