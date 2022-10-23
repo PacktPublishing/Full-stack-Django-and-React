@@ -18,6 +18,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "16"
+      - name: Injecting environment variables
+        run: echo "REACT_APP_API_URL=${{ secrets.API_URL }}" >> .env
       - name: Installing dependencies
         run: yarn install
       - name: Building project
