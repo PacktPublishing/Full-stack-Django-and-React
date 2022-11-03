@@ -41,6 +41,6 @@ module.exports = {
     new webpack.DefinePlugin({ process: {env: {}} }),
   ],
   output: {
-    publicPath: '/',
+    publicPath: '.',
   },
 };
