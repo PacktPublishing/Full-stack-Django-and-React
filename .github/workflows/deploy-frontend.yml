@@ -18,6 +18,12 @@ jobs:
       - uses: pnpm/action-setup@v2.2.4
         with:
           version: 7
+      - name: Use Node.js 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'pnpm'
+          cache-dependency-path: ./social-media-react/pnpm-lock.yaml
 
       - name: Injecting environment variables
         run: echo "REACT_APP_API_URL=${{ secrets.API_URL }}" >> .env
