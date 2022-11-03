@@ -45,6 +45,7 @@ function App() {
       />
       <Route path="/login/" element={<Login />} />
       <Route path="/register/" element={<Registration />} />
+      <Route path="*" element={<div>Page not found</div>} />
     </Routes>
   );
 }
