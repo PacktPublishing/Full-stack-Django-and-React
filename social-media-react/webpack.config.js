@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
+const webpack = require("webpack");
 
 module.exports = {
   module: {
@@ -32,10 +33,14 @@ module.exports = {
         {
           from: "public",
           globOptions: {
-            ignore: ["**/*.html"]
+            ignore: ["**/*.html"],
           },
         },
       ],
     }),
+    new webpack.DefinePlugin({ process: {env: {}} }),
   ],
+  output: {
+    publicPath: '/',
+  },
 };

@@ -2,6 +2,7 @@
   "name": "social-media-react",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@testing-library/jest-dom": "^5.16.4",
