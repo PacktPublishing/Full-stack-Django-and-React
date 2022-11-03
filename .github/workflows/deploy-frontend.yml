@@ -14,15 +14,17 @@ jobs:
       run:
         working-directory: ./social-media-react
     steps:
-      - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2.2.4
-        with:
-          version: 7
+      - name: Checkout
+        uses: actions/checkout@v3
+
       - name: Use Node.js 16
         uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: 'pnpm'
+      - uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 7
       - name: Injecting environment variables
         run: echo "REACT_APP_API_URL=${{ secrets.API_URL }}" >> .env
 
