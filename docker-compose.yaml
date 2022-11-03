@@ -1,6 +1,8 @@
 version: '3.8'
 
 services:
+  redis:
+    image: redis:alpine
   nginx:
     container_name: postagram_web
     restart: on-failure
@@ -27,6 +29,7 @@ services:
      - uploads_volume:/app/uploads
     depends_on:
      - db
+     - redis
   db:
     container_name: postagram_db
     image: postgres:14.3-alpine
