@@ -1,6 +1,9 @@
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import action
+from django.conf import settings
 
 from core.abstract.viewsets import AbstractViewSet
 from core.post.models import Post
@@ -23,6 +26,10 @@ class PostViewSet(AbstractViewSet):
         self.check_object_permissions(self.request, obj)
 
         return obj
+
+    @method_decorator(cache_page(settings.CACHE_TTL))
+    def list(self, request, *args, **kwargs):
+        return super(PostViewSet, self).list(request, *args, **kwargs)
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)

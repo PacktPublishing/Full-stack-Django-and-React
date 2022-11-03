@@ -169,8 +169,8 @@ CACHES = {
         "LOCATION": "redis://redis:6379",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
-        }
+        },
     }
 }
 
-CACHE_TTL = 60 * 1
+CACHE_TTL = 60 * 5
