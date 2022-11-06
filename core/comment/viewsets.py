@@ -1,10 +1,8 @@
 from django.http.response import Http404
-from django.conf import settings
-from django.utils.decorators import method_decorator
-from django.views.decorators.cache import cache_page
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import action
+from django.core.cache import cache
 
 from core.abstract.viewsets import AbstractViewSet
 from core.comment.models import Comment
@@ -35,9 +33,20 @@ class CommentViewSet(AbstractViewSet):
 
         return obj
 
-    @method_decorator(cache_page(settings.CACHE_TTL))
     def list(self, request, *args, **kwargs):
-        return super(CommentViewSet, self).list(request, *args, **kwargs)
+        comment_objects = cache.get("comment_objects")
+
+        if comment_objects is None:
+            comment_objects = self.filter_queryset(self.get_queryset())
+            cache.set("comment_objects", comment_objects)
+
+        page = self.paginate_queryset(comment_objects)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(comment_objects, many=True)
+        return Response(serializer.data)
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
