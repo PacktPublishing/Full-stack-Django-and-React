@@ -1,9 +1,7 @@
-from django.utils.decorators import method_decorator
-from django.views.decorators.cache import cache_page
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import action
-from django.conf import settings
+from django.core.cache import cache
 
 from core.abstract.viewsets import AbstractViewSet
 from core.post.models import Post
@@ -27,9 +25,19 @@ class PostViewSet(AbstractViewSet):
 
         return obj
 
-    @method_decorator(cache_page(settings.CACHE_TTL))
     def list(self, request, *args, **kwargs):
-        return super(PostViewSet, self).list(request, *args, **kwargs)
+        post_objects = cache.get("post_objects")
+        if post_objects is None:
+            post_objects = self.filter_queryset(self.get_queryset())
+            cache.set("post_objects", post_objects)
+
+        page = self.paginate_queryset(post_objects)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(post_objects, many=True)
+        return Response(serializer.data)
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
