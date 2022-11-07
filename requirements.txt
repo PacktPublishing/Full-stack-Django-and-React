@@ -9,3 +9,4 @@ pytest-django==4.5.2
 django-cors-headers==3.11.0
 python-dotenv==0.20.0
 gunicorn==20.1.0
+django-redis==5.2.0
