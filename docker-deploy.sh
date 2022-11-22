@@ -2,14 +2,12 @@
 
 TARGET='main'
 
-cd ~/app || exit
+cd ~/api || exit
 
-ACTION='\033[1;90m'
-NOCOLOR='\033[0m'
+ACTION_COLOR='\033[1;90m'
+NO_COLOR='\033[0m'
 
-# Checking if we are on the main branch
-
-echo -e ${ACTION}Checking Git repo
+echo -e ${ACTION_COLOR} Checking if we are on the target branch
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
 if [ "$BRANCH" != ${TARGET} ]
 then
@@ -19,20 +17,20 @@ fi
 # Checking if the repository is up to date.
 
 git fetch
-HEADHASH=$(git rev-parse HEAD)
-UPSTREAMHASH=$(git rev-parse ${TARGET}@{upstream})
+HEAD_HASH=$(git rev-parse HEAD)
+UPSTREAM_HASH=$(git rev-parse ${TARGET}@{upstream})
 
-if [ "$HEADHASH" == "$UPSTREAMHASH" ]
+if [ "$HEAD_HASH" == "$UPSTREAM_HASH" ]
 then
-	  echo -e "${FINISHED}"Current branch is up to date with origin/${TARGET}."${NOCOLOR}"
+	  echo -e "${FINISHED}"The current branch is up to date with origin/${TARGET}."${NO_COLOR}"
 	    exit 0
 fi
 
-# If that's not the case, we pull the latest changes and we build a new image
+# If there are new changes, we pull these changes.
 
 git pull origin main;
 
-# Docker
+# We can now build and start the containers
 
 docker compose up -d --build
 
