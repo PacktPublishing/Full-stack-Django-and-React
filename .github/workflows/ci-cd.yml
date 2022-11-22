@@ -23,20 +23,20 @@ jobs:
               ENV=TESTING
               DJANGO_ALLOWED_HOSTS=127.0.0.1,localhost
                " >> .env
-    - name: Building containers
+    - name: Building Docker containers
       run: |
         docker-compose up -d --build
-    - name: Running Tests
+    - name: Running Tests inside Docker containers
       run: |
         docker-compose exec -T api pytest
 
   deploy:
-    name: Deploying
+    name: Deploying on EC2 via SSH
     if: ${{ github.event_name == 'push' }}
     needs: [build-test]
     runs-on: ubuntu-latest
     steps:
-    - name: Deploying Application
+    - name: Deploying Application on EC2
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.SSH_EC2_IP }}
