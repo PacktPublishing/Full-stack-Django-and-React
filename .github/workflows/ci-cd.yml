@@ -1,4 +1,4 @@
-name: Build, Test and Deploy Postagram
+name: Build, Test and Deploy Postagram backend
 
 on:
   push:
@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Injecting env vars
+    - name: Injecting environment vars
       run: |
         echo "SECRET_KEY=test_foo
               DATABASE_NAME=test_coredb
@@ -39,8 +39,8 @@ jobs:
     - name: Deploying Application
       uses: appleboy/ssh-action@master
       with:
-        host: ${{ secrets.SSH_AWS_SERVER_IP }}
-        username: ${{ secrets.SSH_SERVER_USER }}
+        host: ${{ secrets.SSH_EC2_IP }}
+        username: ${{ secrets.SSH_EC2_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         passphrase: ${{ secrets.SSH_PASSPHRASE }}
         script: |
