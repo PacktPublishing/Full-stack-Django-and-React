@@ -2,7 +2,7 @@ Django==4.0.1
 psycopg2-binary==2.9.3
 djangorestframework==3.13.1
 django-filter==21.1
-pillow==9.0.0
+pillow==9.3.0
 djangorestframework-simplejwt==5.0.0
 drf-nested-routers==0.93.4
 pytest-django==4.5.2
