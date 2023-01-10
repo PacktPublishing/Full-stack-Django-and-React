@@ -6,8 +6,8 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("core_comment", "0001_initial"),
-        ("core_user", "0005_user_posts_liked"),
+        ('core_comment', '0001_initial'),
+        ('core_user', '0005_user_posts_liked'),
     ]
 
     operations = [
