@@ -34,7 +34,11 @@ function useUserActions() {
   // Edit the user
   function edit(data, userId) {
     return axiosService
-      .patch(`${baseURL}/user/${userId}/`, data)
+      .patch(`${baseURL}/user/${userId}/`, data, {
+        headers: {
+          "content-type": "multipart/form-data",
+        },
+      })
       .then((res) => {
         // Registering the account in the store
         localStorage.setItem(
