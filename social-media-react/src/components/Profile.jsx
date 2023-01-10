@@ -1,10 +1,8 @@
 import React from "react";
 import { Card, Button, Image } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
 import { randomAvatar } from "../utils";
 
 function Profile(props) {
-  const navigate = useNavigate();
   const { user } = props;
 
   const handleNavigateToProfile = () => {

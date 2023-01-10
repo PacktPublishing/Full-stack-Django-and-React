@@ -14,7 +14,7 @@ function UpdateComment(props) {
     post: postId,
   });
 
-  const { toaster, setToaster } = useContext(Context);
+  const { setToaster } = useContext(Context);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -47,7 +47,7 @@ function UpdateComment(props) {
         });
         refresh();
       })
-      .catch((error) => {
+      .catch(() => {
         setToaster({
           type: "danger",
           message: "An error occurred.",

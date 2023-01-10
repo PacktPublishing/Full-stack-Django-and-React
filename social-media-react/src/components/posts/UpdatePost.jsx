@@ -12,7 +12,7 @@ function UpdatePost(props) {
     body: post.body,
   });
 
-  const { toaster, setToaster } = useContext(Context);
+  const { setToaster } = useContext(Context);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -44,7 +44,7 @@ function UpdatePost(props) {
         });
         refresh();
       })
-      .catch((error) => {
+      .catch(() => {
         setToaster({
           type: "danger",
           message: "An error occurred.",
