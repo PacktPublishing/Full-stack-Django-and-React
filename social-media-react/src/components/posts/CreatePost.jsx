@@ -4,7 +4,8 @@ import axiosService from "../../helpers/axios";
 import { getUser } from "../../hooks/user.actions";
 import Toaster from "../Toaster";
 
-function CreatePost() {
+function CreatePost(props) {
+  const { refresh } = props;
   const [show, setShow] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
@@ -40,6 +41,7 @@ function CreatePost() {
         setToastType("success");
         setForm({});
         setShowToast(true);
+        refresh();
       })
       .catch(() => {
         setToastMessage("An error occurred.");
