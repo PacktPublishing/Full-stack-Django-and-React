@@ -35,7 +35,7 @@ function Comment(props) {
         });
         refresh();
       })
-      .catch( () => {
+      .catch(() => {
         setToaster({
           type: "warning",
           message: "Comment deleted 🚀",
