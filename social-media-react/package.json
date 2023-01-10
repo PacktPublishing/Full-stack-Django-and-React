@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/icons": "^5.0.0",
     "@reduxjs/toolkit": "^1.8.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.0.1",
@@ -16,6 +17,8 @@
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.6.2",
     "react-scripts": "5.0.1",
+    "swr": "^2.0.0",
+    "timeago.js": "^4.0.2",
     "web-vitals": "^2.1.0"
   },
   "scripts": {

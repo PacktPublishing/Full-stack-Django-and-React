@@ -4,12 +4,13 @@ import axiosService from "../../helpers/axios";
 import { getUser } from "../../hooks/user.actions";
 import { Context } from "../Layout";
 
-function CreatePost() {
+function CreatePost(props) {
+  const { refresh } = props;
   const [show, setShow] = useState(false);
   const [validated, setValidated] = useState(false);
   const [form, setForm] = useState({});
 
-  const { toaster, setToaster } = useContext(Context);
+  const { setToaster } = useContext(Context);
 
   const user = getUser();
 
@@ -42,6 +43,7 @@ function CreatePost() {
           title: "Post Success",
         });
         setForm({});
+        refresh();
       })
       .catch(() => {
         setToaster({

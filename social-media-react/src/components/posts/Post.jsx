@@ -29,7 +29,7 @@ const MoreToggleIcon = React.forwardRef(({ onClick }, ref) => (
 
 function Post(props) {
   const { post, refresh, isSinglePost } = props;
-  const { toaster, setToaster } = useContext(Context);
+  const { setToaster } = useContext(Context);
 
   const user = getUser();
 
