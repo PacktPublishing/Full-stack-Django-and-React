@@ -6,7 +6,6 @@ from rest_framework.response import Response
 
 class LogoutViewSet(viewsets.ViewSet):
     authentication_classes = ()
-    permission_classes = (permissions.IsAuthenticated,)
     http_method_names = ["post"]
 
     def create(self, request, *args, **kwargs):
