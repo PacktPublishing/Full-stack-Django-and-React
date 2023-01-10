@@ -10,7 +10,7 @@ import MoreToggleIcon from "../MoreToggleIcon";
 
 function Comment(props) {
   const { postId, comment, refresh } = props;
-  const { toaster, setToaster } = useContext(Context);
+  const { setToaster } = useContext(Context);
 
   const user = getUser();
 
@@ -35,7 +35,7 @@ function Comment(props) {
         });
         refresh();
       })
-      .catch((err) => {
+      .catch(() => {
         setToaster({
           type: "warning",
           message: "Comment deleted 🚀",

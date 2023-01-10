@@ -17,7 +17,7 @@ function UpdateProfileForm(props) {
 
   const [avatar, setAvatar] = useState();
 
-  const { toaster, setToaster } = useContext(Context);
+  const { setToaster } = useContext(Context);
 
   const handleSubmit = (event) => {
     event.preventDefault();
