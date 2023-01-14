@@ -1,4 +1,4 @@
-name: Build, Test and Deploy Postagram
+name: Build, Test and Deploy Postagram backend
 
 on:
   push:
@@ -8,41 +8,31 @@ jobs:
   build-test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Injecting env vars
+    - uses: actions/checkout@v3
+    - name: Injecting environment vars
       run: |
-        echo "SECRET_KEY=test_foo
-              DATABASE_NAME=test_coredb
-              DATABASE_USER=test_core
-              DATABASE_PASSWORD=12345678
-              DATABASE_HOST=test_postagram_db
-              DATABASE_PORT=5432
-              POSTGRES_USER=test_core
-              POSTGRES_PASSWORD=12345678
-              POSTGRES_DB=test_coredb
-              ENV=TESTING
-              DJANGO_ALLOWED_HOSTS=127.0.0.1,localhost
-               " >> .env
-    - name: Building containers
+        echo "${{ secrets.TEST_SECRETS }}" >> .env
+    - name: Building Docker containers
       run: |
         docker-compose up -d --build
-    - name: Running Tests
+        docker-compose logs
+    - name: Running Tests inside Docker containers
       run: |
         docker-compose exec -T api pytest
 
   deploy:
-    name: Deploying
+    name: Deploying on EC2 via SSH
     if: ${{ github.event_name == 'push' }}
     needs: [build-test]
     runs-on: ubuntu-latest
     steps:
-    - name: Deploying Application
+    - name: Deploying Application on EC2
       uses: appleboy/ssh-action@master
       with:
-        host: ${{ secrets.SSH_AWS_SERVER_IP }}
-        username: ${{ secrets.SSH_SERVER_USER }}
+        host: ${{ secrets.SSH_EC2_IP }}
+        username: ${{ secrets.SSH_EC2_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         passphrase: ${{ secrets.SSH_PASSPHRASE }}
         script: |
           cd ~/.scripts
-          ./docker-deploy.sh
+          ./docker-ec2-deploy.sh
