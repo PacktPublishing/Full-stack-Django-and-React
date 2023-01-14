@@ -45,4 +45,4 @@ jobs:
           aws-region: us-west-1
 
       - name: Deploy to S3 bucket
-        run: aws s3 sync ./build/ s3://postagram --delete
+        run: aws s3 sync ./dist/ s3://postagram --delete
