@@ -1,7 +1,7 @@
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
-const webpack = require("webpack");
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   module: {
@@ -38,7 +38,7 @@ module.exports = {
         },
       ],
     }),
-    new webpack.DefinePlugin({ process: {env: {}} }),
+    new Dotenv(),
   ],
   output: {
     publicPath: '.',

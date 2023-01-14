@@ -17,6 +17,7 @@ specifiers:
   bootstrap: ^5.2.3
   copy-webpack-plugin: ^11.0.0
   css-loader: ^6.7.3
+  dotenv-webpack: ^8.0.1
   html-loader: ^4.2.0
   html-webpack-plugin: ^5.5.0
   jest-localstorage-mock: ^2.4.22
@@ -64,6 +65,7 @@ devDependencies:
   babel-loader: 9.1.0_6zc4kxld457avlfyhj3lzsljlm
   copy-webpack-plugin: 11.0.0_webpack@5.74.0
   css-loader: 6.7.3_webpack@5.74.0
+  dotenv-webpack: 8.0.1_webpack@5.74.0
   html-loader: 4.2.0_webpack@5.74.0
   html-webpack-plugin: 5.5.0_webpack@5.74.0
   jest-localstorage-mock: 2.4.22
@@ -4286,14 +4288,35 @@ packages:
       no-case: 3.0.4
       tslib: 2.4.0
 
+  /dotenv-defaults/2.0.2:
+    resolution: {integrity: sha512-iOIzovWfsUHU91L5i8bJce3NYK5JXeAwH50Jh6+ARUdLiiGlYWfGw6UkzsYqaXZH/hjE/eCd/PlfM/qqyK0AMg==}
+    dependencies:
+      dotenv: 8.6.0
+    dev: true
+
   /dotenv-expand/5.1.0:
     resolution: {integrity: sha512-YXQl1DSa4/PQyRfgrv6aoNjhasp/p4qs9FjJ4q4cQk+8m4r6k4ZSiEyytKG8f8W9gi8WsQtIObNmKd+tMzNTmA==}
     dev: false
+
+  /dotenv-webpack/8.0.1_webpack@5.74.0:
+    resolution: {integrity: sha512-CdrgfhZOnx4uB18SgaoP9XHRN2v48BbjuXQsZY5ixs5A8579NxQkmMxRtI7aTwSiSQcM2ao12Fdu+L3ZS3bG4w==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      webpack: ^4 || ^5
+    dependencies:
+      dotenv-defaults: 2.0.2
+      webpack: 5.74.0_webpack-cli@4.10.0
+    dev: true
 
   /dotenv/10.0.0:
     resolution: {integrity: sha512-rlBi9d8jpv9Sf1klPjNfFAuWDjKLwTIJJ/VxtoTwIR6hnZxcEOQCZg2oIL3MWBYw5GpUDKOEnND7LXTbIpQ03Q==}
     engines: {node: '>=10'}
     dev: false
+
+  /dotenv/8.6.0:
+    resolution: {integrity: sha512-IrPdXQsk2BbzvCBGBOTmmSH5SodmqZNt4ERAZDmW4CT+tL8VtvinqywuANaFu4bOMWki16nqf0e4oC0QIaDr/g==}
+    engines: {node: '>=10'}
+    dev: true
 
   /duplexer/0.1.2:
     resolution: {integrity: sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==}
