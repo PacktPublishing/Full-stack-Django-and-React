@@ -16,6 +16,3 @@ class Post(AbstractModel):
 
     def __str__(self):
         return f"{self.author.name}"
-
-    class Meta:
-        db_table = "'core.post'"
