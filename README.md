@@ -61,3 +61,8 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 **Kolawole Mangabo** 
 is a Software Engineer, currently specializing in HTML, CSS, JavaScript, and Python while regularly using React, Vue, and Django to build single-page applications and marketing landing pages in his daily routine. His goal in a team is to always build products that provide pixel-perfect, performant experiences adjusting business and user needs. When he is not coding, he spends most of his time writing and publishing articles on various websites on topics like software architecture, testing, full-stack development, and developer experience.
 
+
+### Download a free PDF
+
+ <i>If you have already purchased a print or Kindle version of this book, you can get a DRM-free PDF version at no cost.<br>Simply click on the link to claim your free PDF.</i>
+<p align="center"> <a href="https://packt.link/free-ebook/9781803242972">https://packt.link/free-ebook/9781803242972 </a> </p>
