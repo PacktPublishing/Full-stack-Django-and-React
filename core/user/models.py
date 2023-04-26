@@ -15,14 +15,14 @@ class UserManager(BaseUserManager):
         except (ObjectDoesNotExist, ValueError, TypeError):
             return Http404
 
-    def create_user(self, username, email, password=None, **kwargs):
+    def create_user(self, username, email, password, **kwargs):
         """Create and return a `User` with an email, phone number, username and password."""
         if username is None:
             raise TypeError('Users must have a username.')
         if email is None:
             raise TypeError('Users must have an email.')
         if password is None:
-            raise TypeError('User must have an email.')
+            raise TypeError('Users must have a password.')
 
         user = self.model(username=username, email=self.normalize_email(email), **kwargs)
         user.set_password(password)
