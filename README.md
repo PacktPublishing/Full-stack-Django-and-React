@@ -49,6 +49,24 @@ With the following software and hardware list you can run all code files present
 
 We also provide a PDF file that has color images of the screenshots/diagrams used in this book. [Click here to download it](https://packt.link/jdEHp).
 
+## Issue - Initial User Migration Failed with Admin.0001 Dependency
+After creating the `UserManager` and `User` models, if the migration fails with the following error:<br>
+`Migration admin.0001_initial is applied before its dependency core_user.0001_initial on database 'default'.`
+
+Please try running these commands:<br> 
+`$ sudo su postgres`<br>
+`$  psql`<br>
+`postgres=# DROP DATABASE coredb;`<br>
+`postgres=# CREATE DATABASE coredb;`<br>
+`postgres=# ALTER ROLE core SET client_encoding TO 'utf8';`<br>
+`postgres=# ALTER ROLE core SET default_transaction_isolation TO 'read committed';`<br>
+`postgres=# ALTER ROLE core SET timezone TO 'UTC';`<br>
+`postgres=# ALTER DATABASE coredb OWNER TO core;`<br>
+`postgres=# GRANT ALL PRIVILEGES ON DATABASE coredb TO core;`<br>
+
+If you already  ran the "makemigrations" for core_user, simply  run `python manage.py migrate`
+
+For more details check out this <a href="https://github.com/PacktPublishing/Full-stack-Django-and-React/issues/46">thread</a> by our reader <b>remyluslosius</b>.
 
 ### Related products
 * Becoming an Enterprise Django Developer [[Packt]](https://www.packtpub.com/product/becoming-an-enterprise-django-developer/9781801073639?_ga=2.198495151.1640498229.1673976945-1676364594.1662627481) [[Amazon]](https://www.amazon.in/Becoming-Enterprise-Django-Developer-applications/dp/1801073635)
