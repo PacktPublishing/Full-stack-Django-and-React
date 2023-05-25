@@ -69,16 +69,26 @@ If you already  ran the "makemigrations" for core_user, simply  run `python mana
 For more details check out this <a href="https://github.com/PacktPublishing/Full-stack-Django-and-React/issues/46">thread</a> by our reader <b>remyluslosius</b>.
 
 ## Errata
-* Page 81 (line 19): ```post = serializers.SlugRelatedField(queryset=Post.objects.all(), slug_field='public_id')
+* Page 81 (line 19): 
+```
+post = serializers.SlugRelatedField(queryset=Post.objects.all(), slug_field='public_id')
+
   def to_representation(self, instance):
-        rep = super().to_representation(instance)```_should be_
-        ```post = serializers.SlugRelatedField(queryset=Post.objects.all(), slug_field='public_id')
+        rep = super().to_representation(instance)
+        
+```
+_should be_
+```
+post = serializers.SlugRelatedField(queryset=Post.objects.all(), slug_field='public_id')
+
         def validate_author(self, value):
-        if self.context["request"].user != value:
+          if self.context["request"].user != value:
             raise ValidationError("You can't create a post for another user.")
         return value
-          def to_representation(self, instance):
-        rep = super().to_representation(instance)```
+        
+        def to_representation(self, instance):
+          rep = super().to_representation(instance)
+```
 
 ### Related products
 * Becoming an Enterprise Django Developer [[Packt]](https://www.packtpub.com/product/becoming-an-enterprise-django-developer/9781801073639?_ga=2.198495151.1640498229.1673976945-1676364594.1662627481) [[Amazon]](https://www.amazon.in/Becoming-Enterprise-Django-Developer-applications/dp/1801073635)
