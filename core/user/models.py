@@ -21,7 +21,7 @@ class UserManager(BaseUserManager, AbstractManager):
         if email is None:
             raise TypeError("Users must have an email.")
         if password is None:
-            raise TypeError("User must have an email.")
+            raise TypeError("User must have a password.")
 
         user = self.model(
             username=username, email=self.normalize_email(email), **kwargs
